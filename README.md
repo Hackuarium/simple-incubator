@@ -19,12 +19,12 @@ The goal is to create a simple controller of temperature for an incubator.
 | PD2  | D2       | Rotary                | INT.0 |
 | PD3  | D3       | Rotary                | INT.1 |
 | PD4  | D4       | Rotary push           |       |
-| PD5  | D5       |                       | PWM   |
-| PD6  | D6       |                       | PWM   |
+| PD5  | D5       | Heating               | PWM   |
+| PD6  | D6       | Fan                   | PWM   |
 | PD7  | D7       | LCD1                  |       |
 | PB0  | D8       | LCD2                  |       |
-| PB1  | D9       | Heating               | PWM   |
-| PB2  | D10      | Fan                   | PWM   |
+| PB1  | D9       |                       | PWM   |
+| PB2  | D10      |                       | PWM   |
 | PB3  | MOSI D11 | LCD5                  | PWM   |
 | PB4  | MISO D12 | LCD6                  |       |
 | PB5  | SCK D13  | LCD7 (background)     |       |
