@@ -350,7 +350,7 @@ F 3 "~" H 6150 2350 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L simple-incubator-rescue:BSP75-BSP75 Q1
+L simple-incubator-rescue:BSP75-BSP75-simple-incubator-rescue Q1
 U 1 1 5C8944AE
 P 6950 2900
 F 0 "Q1" H 7156 2946 50  0000 L CNN
@@ -372,7 +372,7 @@ F 3 "~" H 3050 3710 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L simple-incubator-rescue:ICSP-ICSP SP1
+L simple-incubator-rescue:ICSP-ICSP-simple-incubator-rescue SP1
 U 1 1 5C8952B3
 P 2550 5100
 F 0 "SP1" H 2550 5475 50  0000 C CNN
