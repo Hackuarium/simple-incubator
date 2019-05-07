@@ -265,7 +265,7 @@
   )
 
   (module Connector_RJ:RJ12_Amphenol_54601 (layer F.Cu) (tedit 5AE2E32D) (tstamp 5CD5290C)
-    (at 214.885001 130.025001)
+    (at 205.74 130.81)
     (descr "RJ12 connector  https://cdn.amphenol-icc.com/media/wysiwyg/files/drawing/c-bmj-0082.pdf")
     (tags "RJ12 connector")
     (path /5CC89C51)
