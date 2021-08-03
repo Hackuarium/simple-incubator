@@ -1,4 +1,0 @@
-(sym_lib_table
-  (lib (name ICSP)(type Legacy)(uri /home/lpatiny/git/hackuarium/simple-incubator/kicad/simple-incubator/symbols/ICSP.lib)(options "")(descr ""))
-  (lib (name simple-incubator-rescue)(type Legacy)(uri ${KIPRJMOD}/simple-incubator-rescue.lib)(options "")(descr ""))
-)

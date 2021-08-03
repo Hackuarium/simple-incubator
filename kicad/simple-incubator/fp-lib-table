@@ -1,3 +1,0 @@
-(fp_lib_table
-  (lib (name J2Power)(type KiCad)(uri ${KIPRJMOD}/J2Power.pretty)(options "")(descr ""))
-)
