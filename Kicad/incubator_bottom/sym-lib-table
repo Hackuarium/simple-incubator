@@ -1,4 +1,5 @@
 (sym_lib_table
   (lib (name ZXMS6004)(type Legacy)(uri /home/andres/Git/phmeter/pcb/main/library/ZXMS6004.lib)(options "")(descr ""))
   (lib (name Incubator)(type Legacy)(uri ${KIPRJMOD}/Incubator.pretty/Incubator.lib)(options "")(descr ""))
+  (lib (name Bertha_main)(type Legacy)(uri ${KIPRJMOD}/libraries/Bertha_main.lib)(options "")(descr ""))
 )
