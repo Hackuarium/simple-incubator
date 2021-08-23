@@ -1102,4 +1102,6 @@ Wire Wire Line
 	1700 3000 1700 2900
 Wire Wire Line
 	1700 2900 1775 2900
+Text Notes 3250 5275 0    102  ~ 0
+PID
 $EndSCHEMATC
