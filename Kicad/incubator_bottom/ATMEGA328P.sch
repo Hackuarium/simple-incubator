@@ -14,7 +14,7 @@ Comment3 ""
 Comment4 ""
 $EndDescr
 $Comp
-L MCU_Microchip_ATmega:ATmega328P-AU U3
+L incubator_bottom-rescue:ATmega328P-AU-MCU_Microchip_ATmega U3
 U 1 1 610AABC9
 P 6175 3625
 F 0 "U3" H 5775 2050 50  0000 C CNN
@@ -25,7 +25,7 @@ F 3 "http://ww1.microchip.com/downloads/en/DeviceDoc/ATmega328_P%20AVR%20MCU%20w
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:VCC #PWR0119
+L incubator_bottom-rescue:VCC-power #PWR0119
 U 1 1 610AABCF
 P 6175 1950
 F 0 "#PWR0119" H 6175 1800 50  0001 C CNN
@@ -36,7 +36,7 @@ F 3 "" H 6175 1950 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L Device:C C2
+L incubator_bottom-rescue:C-Device C2
 U 1 1 610AABD5
 P 4925 2275
 F 0 "C2" H 5040 2321 50  0000 L CNN
@@ -47,7 +47,7 @@ F 3 "~" H 4925 2275 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L Device:C C1
+L incubator_bottom-rescue:C-Device C1
 U 1 1 610AABDB
 P 4600 2275
 F 0 "C1" H 4715 2321 50  0000 L CNN
@@ -65,7 +65,7 @@ Wire Wire Line
 	4600 2050 4925 2050
 Connection ~ 4925 2050
 $Comp
-L power:GND #PWR0120
+L incubator_bottom-rescue:GND-power #PWR0120
 U 1 1 610AABE5
 P 4600 2525
 F 0 "#PWR0120" H 4600 2275 50  0001 C CNN
@@ -85,7 +85,7 @@ Wire Wire Line
 	4600 2525 4600 2475
 Connection ~ 4600 2475
 $Comp
-L power:VCC #PWR0121
+L incubator_bottom-rescue:VCC-power #PWR0121
 U 1 1 610AABF0
 P 5150 3400
 F 0 "#PWR0121" H 5150 3250 50  0001 C CNN
@@ -126,7 +126,7 @@ Wire Wire Line
 Text GLabel 4850 3900 0    50   Input ~ 0
 ~RESET
 $Comp
-L Device:R R12
+L incubator_bottom-rescue:R-Device R12
 U 1 1 610AAC20
 P 5150 3675
 F 0 "R12" H 5220 3721 50  0000 L CNN
@@ -185,7 +185,7 @@ D6
 Text HLabel 6850 4825 2    50   Input ~ 0
 D7
 $Comp
-L power:GND #PWR0122
+L incubator_bottom-rescue:GND-power #PWR0122
 U 1 1 610AAC01
 P 5150 4350
 F 0 "#PWR0122" H 5150 4100 50  0001 C CNN
@@ -198,7 +198,7 @@ $EndComp
 Text HLabel 4500 2475 0    50   Input ~ 0
 GND
 $Comp
-L power:GND #PWR0123
+L incubator_bottom-rescue:GND-power #PWR0123
 U 1 1 610AAC08
 P 6175 5250
 F 0 "#PWR0123" H 6175 5000 50  0001 C CNN
@@ -253,7 +253,7 @@ Connection ~ 6275 2050
 Wire Wire Line
 	6275 2050 6175 2050
 $Comp
-L Jumper:SolderJumper_2_Open JP1
+L incubator_bottom-rescue:SolderJumper_2_Open-Jumper JP1
 U 1 1 61118ECF
 P 5150 4125
 F 0 "JP1" V 5104 4193 50  0000 L CNN

@@ -1,59 +1,11 @@
 EESchema-LIBRARY Version 2.4
 #encoding utf-8
 #
-# Bertha_main_IPB80N03S4L-03
+# +12V-power
 #
-DEF Bertha_main_IPB80N03S4L-03 Q 0 20 Y N 1 F N
-F0 "Q" 200 75 50 H V L CNN
-F1 "Bertha_main_IPB80N03S4L-03" 200 0 50 H V L CNN
-F2 "Package_TO_SOT_SMD:TO-263-2" 200 -75 50 H I L CIN
-F3 "" 0 0 50 H I L CNN
-$FPLIST
- TO?263*
-$ENDFPLIST
-DRAW
-C 65 0 110 0 1 10 N
-C 100 -70 10 0 1 0 F
-C 100 70 10 0 1 0 F
-P 2 0 1 0 10 0 -100 0 N
-P 2 0 1 10 10 75 10 -75 N
-P 2 0 1 10 30 -50 30 -90 N
-P 2 0 1 10 30 20 30 -20 N
-P 2 0 1 10 30 90 30 50 N
-P 2 0 1 0 100 100 100 70 N
-P 3 0 1 0 100 -100 100 0 30 0 N
-P 4 0 1 0 30 -70 130 -70 130 70 30 70 N
-P 4 0 1 0 40 0 80 15 80 -15 40 0 F
-P 4 0 1 0 110 20 115 15 145 15 150 10 N
-P 4 0 1 0 130 15 115 -10 145 -10 130 15 N
-X G 1 -200 0 100 R 50 50 1 1 I
-X D 2 100 200 100 D 50 50 1 1 P
-X S 3 100 -200 100 U 50 50 1 1 P
-ENDDRAW
-ENDDEF
-#
-# Incubator_HSC1004R0J
-#
-DEF Incubator_HSC1004R0J R 0 0 N Y 1 F N
-F0 "R" 80 0 50 V V C CNN
-F1 "Incubator_HSC1004R0J" 0 0 50 V V C CNN
-F2 "Incubator:HSC1004R0J" -70 0 50 V I C CNN
-F3 "" 0 0 50 H I C CNN
-$FPLIST
- R_*
-$ENDFPLIST
-DRAW
-S -40 -100 40 100 0 1 10 N
-X ~ 1 0 150 50 D 50 50 1 1 P
-X ~ 2 0 -150 50 U 50 50 1 1 P
-ENDDRAW
-ENDDEF
-#
-# incubator_bottom-rescue_+12V-power
-#
-DEF incubator_bottom-rescue_+12V-power #PWR 0 0 Y Y 1 F P
+DEF +12V-power #PWR 0 0 Y Y 1 F P
 F0 "#PWR" 0 -150 50 H I C CNN
-F1 "incubator_bottom-rescue_+12V-power" 0 140 50 H V C CNN
+F1 "+12V-power" 0 140 50 H V C CNN
 F2 "" 0 0 50 H I C CNN
 F3 "" 0 0 50 H I C CNN
 DRAW
@@ -64,11 +16,11 @@ X +12V 1 0 0 0 U 50 50 1 1 W N
 ENDDRAW
 ENDDEF
 #
-# incubator_bottom-rescue_ATmega328P-AU-MCU_Microchip_ATmega
+# ATmega328P-AU-MCU_Microchip_ATmega
 #
-DEF incubator_bottom-rescue_ATmega328P-AU-MCU_Microchip_ATmega U 0 20 Y Y 1 F N
+DEF ATmega328P-AU-MCU_Microchip_ATmega U 0 20 Y Y 1 F N
 F0 "U" -500 1450 50 H V L BNN
-F1 "incubator_bottom-rescue_ATmega328P-AU-MCU_Microchip_ATmega" 100 -1450 50 H V L TNN
+F1 "ATmega328P-AU-MCU_Microchip_ATmega" 100 -1450 50 H V L TNN
 F2 "Package_QFP:TQFP-32_7x7mm_P0.8mm" 0 0 50 H I C CIN
 F3 "" 0 0 50 H I C CNN
 $FPLIST
@@ -111,11 +63,11 @@ X PD5 9 600 -1000 100 L 50 50 1 1 B
 ENDDRAW
 ENDDEF
 #
-# incubator_bottom-rescue_AudioJack3_SwitchTR-Connector
+# AudioJack3_SwitchTR-Connector
 #
-DEF incubator_bottom-rescue_AudioJack3_SwitchTR-Connector J 0 20 Y Y 1 F N
+DEF AudioJack3_SwitchTR-Connector J 0 20 Y Y 1 F N
 F0 "J" 0 350 50 H V C CNN
-F1 "incubator_bottom-rescue_AudioJack3_SwitchTR-Connector" 0 250 50 H V C CNN
+F1 "AudioJack3_SwitchTR-Connector" 0 250 50 H V C CNN
 F2 "" 0 0 50 H I C CNN
 F3 "" 0 0 50 H I C CNN
 $FPLIST
@@ -139,11 +91,11 @@ X ~ TN 200 -300 100 L 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# incubator_bottom-rescue_C-Device
+# C-Device
 #
-DEF incubator_bottom-rescue_C-Device C 0 10 N Y 1 F N
+DEF C-Device C 0 10 N Y 1 F N
 F0 "C" 25 100 50 H V L CNN
-F1 "incubator_bottom-rescue_C-Device" 25 -100 50 H V L CNN
+F1 "C-Device" 25 -100 50 H V L CNN
 F2 "" 38 -150 50 H I C CNN
 F3 "" 0 0 50 H I C CNN
 $FPLIST
@@ -157,11 +109,11 @@ X ~ 2 0 -150 110 U 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# incubator_bottom-rescue_Conn_01x02-Connector_Generic
+# Conn_01x02-Connector_Generic
 #
-DEF incubator_bottom-rescue_Conn_01x02-Connector_Generic J 0 40 Y N 1 F N
+DEF Conn_01x02-Connector_Generic J 0 40 Y N 1 F N
 F0 "J" 0 100 50 H V C CNN
-F1 "incubator_bottom-rescue_Conn_01x02-Connector_Generic" 0 -200 50 H V C CNN
+F1 "Conn_01x02-Connector_Generic" 0 -200 50 H V C CNN
 F2 "" 0 0 50 H I C CNN
 F3 "" 0 0 50 H I C CNN
 $FPLIST
@@ -176,11 +128,11 @@ X Pin_2 2 -200 -100 150 R 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# incubator_bottom-rescue_Conn_01x05-Connector_Generic
+# Conn_01x05-Connector_Generic
 #
-DEF incubator_bottom-rescue_Conn_01x05-Connector_Generic J 0 40 Y N 1 F N
+DEF Conn_01x05-Connector_Generic J 0 40 Y N 1 F N
 F0 "J" 0 300 50 H V C CNN
-F1 "incubator_bottom-rescue_Conn_01x05-Connector_Generic" 0 -300 50 H V C CNN
+F1 "Conn_01x05-Connector_Generic" 0 -300 50 H V C CNN
 F2 "" 0 0 50 H I C CNN
 F3 "" 0 0 50 H I C CNN
 $FPLIST
@@ -201,11 +153,11 @@ X Pin_5 5 -200 -200 150 R 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# incubator_bottom-rescue_Conn_01x06-Connector_Generic
+# Conn_01x06-Connector_Generic
 #
-DEF incubator_bottom-rescue_Conn_01x06-Connector_Generic J 0 40 Y N 1 F N
+DEF Conn_01x06-Connector_Generic J 0 40 Y N 1 F N
 F0 "J" 0 300 50 H V C CNN
-F1 "incubator_bottom-rescue_Conn_01x06-Connector_Generic" 0 -400 50 H V C CNN
+F1 "Conn_01x06-Connector_Generic" 0 -400 50 H V C CNN
 F2 "" 0 0 50 H I C CNN
 F3 "" 0 0 50 H I C CNN
 $FPLIST
@@ -228,11 +180,11 @@ X Pin_6 6 -200 -300 150 R 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# incubator_bottom-rescue_Conn_02x03_Odd_Even-Connector_Generic
+# Conn_02x03_Odd_Even-Connector_Generic
 #
-DEF incubator_bottom-rescue_Conn_02x03_Odd_Even-Connector_Generic J 0 40 Y N 1 F N
+DEF Conn_02x03_Odd_Even-Connector_Generic J 0 40 Y N 1 F N
 F0 "J" 50 200 50 H V C CNN
-F1 "incubator_bottom-rescue_Conn_02x03_Odd_Even-Connector_Generic" 50 -200 50 H V C CNN
+F1 "Conn_02x03_Odd_Even-Connector_Generic" 50 -200 50 H V C CNN
 F2 "" 0 0 50 H I C CNN
 F3 "" 0 0 50 H I C CNN
 $FPLIST
@@ -255,11 +207,11 @@ X Pin_6 6 300 -100 150 L 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# incubator_bottom-rescue_DS18B20-Sensor_Temperature
+# DS18B20-Sensor_Temperature
 #
-DEF incubator_bottom-rescue_DS18B20-Sensor_Temperature U 0 40 Y Y 1 F N
+DEF DS18B20-Sensor_Temperature U 0 40 Y Y 1 F N
 F0 "U" -150 250 50 H V C CNN
-F1 "incubator_bottom-rescue_DS18B20-Sensor_Temperature" 250 250 50 H V C CNN
+F1 "DS18B20-Sensor_Temperature" 250 250 50 H V C CNN
 F2 "Package_TO_SOT_THT:TO-92_Inline" -1000 -250 50 H I C CNN
 F3 "" -150 250 50 H I C CNN
 $FPLIST
@@ -283,11 +235,11 @@ X VDD 3 0 300 100 D 50 50 1 1 W
 ENDDRAW
 ENDDEF
 #
-# incubator_bottom-rescue_DS18B20Z-Sensor_Temperature
+# DS18B20Z-Sensor_Temperature
 #
-DEF incubator_bottom-rescue_DS18B20Z-Sensor_Temperature U 0 40 Y Y 1 F N
+DEF DS18B20Z-Sensor_Temperature U 0 40 Y Y 1 F N
 F0 "U" -150 250 50 H V C CNN
-F1 "incubator_bottom-rescue_DS18B20Z-Sensor_Temperature" 200 250 50 H V C CNN
+F1 "DS18B20Z-Sensor_Temperature" 200 250 50 H V C CNN
 F2 "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm" -1000 -250 50 H I C CNN
 F3 "" -150 250 50 H I C CNN
 $FPLIST
@@ -316,11 +268,11 @@ X NC 8 300 -100 100 L 50 50 1 1 N N
 ENDDRAW
 ENDDEF
 #
-# incubator_bottom-rescue_GND-power
+# GND-power
 #
-DEF incubator_bottom-rescue_GND-power #PWR 0 0 Y Y 1 F P
+DEF GND-power #PWR 0 0 Y Y 1 F P
 F0 "#PWR" 0 -250 50 H I C CNN
-F1 "incubator_bottom-rescue_GND-power" 0 -150 50 H V C CNN
+F1 "GND-power" 0 -150 50 H V C CNN
 F2 "" 0 0 50 H I C CNN
 F3 "" 0 0 50 H I C CNN
 DRAW
@@ -329,11 +281,11 @@ X GND 1 0 0 0 D 50 50 1 1 W N
 ENDDRAW
 ENDDEF
 #
-# incubator_bottom-rescue_MBR0520LT-Diode
+# MBR0520LT-Diode
 #
-DEF incubator_bottom-rescue_MBR0520LT-Diode D 0 40 N N 1 F N
+DEF MBR0520LT-Diode D 0 40 N N 1 F N
 F0 "D" 0 100 50 H V C CNN
-F1 "incubator_bottom-rescue_MBR0520LT-Diode" 0 -100 50 H V C CNN
+F1 "MBR0520LT-Diode" 0 -100 50 H V C CNN
 F2 "Diode_SMD:D_SOD-123" 0 -175 50 H I C CNN
 F3 "" 0 0 50 H I C CNN
 $FPLIST
@@ -348,11 +300,11 @@ X A 2 150 0 100 L 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# incubator_bottom-rescue_MountingHole-Mechanical
+# MountingHole-Mechanical
 #
-DEF incubator_bottom-rescue_MountingHole-Mechanical H 0 40 Y Y 1 F N
+DEF MountingHole-Mechanical H 0 40 Y Y 1 F N
 F0 "H" 0 200 50 H V C CNN
-F1 "incubator_bottom-rescue_MountingHole-Mechanical" 0 125 50 H V C CNN
+F1 "MountingHole-Mechanical" 0 125 50 H V C CNN
 F2 "" 0 0 50 H I C CNN
 F3 "" 0 0 50 H I C CNN
 $FPLIST
@@ -363,11 +315,11 @@ C 0 0 50 0 1 50 N
 ENDDRAW
 ENDDEF
 #
-# incubator_bottom-rescue_PWR_FLAG-power
+# PWR_FLAG-power
 #
-DEF incubator_bottom-rescue_PWR_FLAG-power #FLG 0 0 N N 1 F P
+DEF PWR_FLAG-power #FLG 0 0 N N 1 F P
 F0 "#FLG" 0 75 50 H I C CNN
-F1 "incubator_bottom-rescue_PWR_FLAG-power" 0 150 50 H V C CNN
+F1 "PWR_FLAG-power" 0 150 50 H V C CNN
 F2 "" 0 0 50 H I C CNN
 F3 "" 0 0 50 H I C CNN
 DRAW
@@ -376,11 +328,11 @@ X pwr 1 0 0 0 U 50 50 0 0 w
 ENDDRAW
 ENDDEF
 #
-# incubator_bottom-rescue_R-Device
+# R-Device
 #
-DEF incubator_bottom-rescue_R-Device R 0 0 N Y 1 F N
+DEF R-Device R 0 0 N Y 1 F N
 F0 "R" 80 0 50 V V C CNN
-F1 "incubator_bottom-rescue_R-Device" 0 0 50 V V C CNN
+F1 "R-Device" 0 0 50 V V C CNN
 F2 "" -70 0 50 V I C CNN
 F3 "" 0 0 50 H I C CNN
 $FPLIST
@@ -393,11 +345,11 @@ X ~ 2 0 -150 50 U 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# incubator_bottom-rescue_RJ12-Connector
+# RJ12-Connector
 #
-DEF incubator_bottom-rescue_RJ12-Connector J 0 40 Y Y 1 F N
+DEF RJ12-Connector J 0 40 Y Y 1 F N
 F0 "J" -200 450 50 H V R CNN
-F1 "incubator_bottom-rescue_RJ12-Connector" 100 450 50 H V L CNN
+F1 "RJ12-Connector" 100 450 50 H V L CNN
 F2 "" 0 25 50 V I C CNN
 F3 "" 0 25 50 V I C CNN
 $FPLIST
@@ -424,11 +376,11 @@ X ~ 6 400 300 100 L 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# incubator_bottom-rescue_SolderJumper_2_Open-Jumper
+# SolderJumper_2_Open-Jumper
 #
-DEF incubator_bottom-rescue_SolderJumper_2_Open-Jumper JP 0 0 Y N 1 F N
+DEF SolderJumper_2_Open-Jumper JP 0 0 Y N 1 F N
 F0 "JP" 0 80 50 H V C CNN
-F1 "incubator_bottom-rescue_SolderJumper_2_Open-Jumper" 0 -100 50 H V C CNN
+F1 "SolderJumper_2_Open-Jumper" 0 -100 50 H V C CNN
 F2 "" 0 0 50 H I C CNN
 F3 "" 0 0 50 H I C CNN
 $FPLIST
@@ -446,11 +398,11 @@ X B 2 150 0 100 L 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# incubator_bottom-rescue_VCC-power
+# VCC-power
 #
-DEF incubator_bottom-rescue_VCC-power #PWR 0 0 Y Y 1 F P
+DEF VCC-power #PWR 0 0 Y Y 1 F P
 F0 "#PWR" 0 -150 50 H I C CNN
-F1 "incubator_bottom-rescue_VCC-power" 0 150 50 H V C CNN
+F1 "VCC-power" 0 150 50 H V C CNN
 F2 "" 0 0 50 H I C CNN
 F3 "" 0 0 50 H I C CNN
 DRAW
@@ -461,11 +413,11 @@ X VCC 1 0 0 0 U 50 50 1 1 W N
 ENDDRAW
 ENDDEF
 #
-# incubator_bottom-rescue_ZXMS6004-ZXMS6004
+# ZXMS6004-ZXMS6004
 #
-DEF incubator_bottom-rescue_ZXMS6004-ZXMS6004 Q 0 0 Y N 1 F N
+DEF ZXMS6004-ZXMS6004 Q 0 0 Y N 1 F N
 F0 "Q" 100 75 50 H V L CNN
-F1 "incubator_bottom-rescue_ZXMS6004-ZXMS6004" 100 0 50 H V L CNN
+F1 "ZXMS6004-ZXMS6004" 100 0 50 H V L CNN
 F2 "Package_TO_SOT_SMD:SOT-23" 100 -75 50 H I L CIN
 F3 "" 100 75 50 H I L CNN
 $FPLIST
