@@ -335,50 +335,6 @@ Wire Wire Line
 NoConn ~ 7650 1675
 NoConn ~ 7650 1475
 $Comp
-L incubator_bottom-rescue:MountingHole-Mechanical H5
-U 1 1 6110AD0D
-P 5025 7225
-F 0 "H5" H 5125 7271 50  0000 L CNN
-F 1 "MountingHole" H 5125 7180 50  0000 L CNN
-F 2 "MountingHole:MountingHole_4.3mm_M4" H 5025 7225 50  0001 C CNN
-F 3 "~" H 5025 7225 50  0001 C CNN
-	1    5025 7225
-	1    0    0    -1  
-$EndComp
-$Comp
-L incubator_bottom-rescue:MountingHole-Mechanical H7
-U 1 1 6110B26F
-P 5800 7225
-F 0 "H7" H 5900 7271 50  0000 L CNN
-F 1 "MountingHole" H 5900 7180 50  0000 L CNN
-F 2 "MountingHole:MountingHole_4.3mm_M4" H 5800 7225 50  0001 C CNN
-F 3 "~" H 5800 7225 50  0001 C CNN
-	1    5800 7225
-	1    0    0    -1  
-$EndComp
-$Comp
-L incubator_bottom-rescue:MountingHole-Mechanical H6
-U 1 1 6110B9C7
-P 5025 7500
-F 0 "H6" H 5125 7546 50  0000 L CNN
-F 1 "MountingHole" H 5125 7455 50  0000 L CNN
-F 2 "MountingHole:MountingHole_4.3mm_M4" H 5025 7500 50  0001 C CNN
-F 3 "~" H 5025 7500 50  0001 C CNN
-	1    5025 7500
-	1    0    0    -1  
-$EndComp
-$Comp
-L incubator_bottom-rescue:MountingHole-Mechanical H8
-U 1 1 6110BE5B
-P 5800 7475
-F 0 "H8" H 5900 7521 50  0000 L CNN
-F 1 "MountingHole" H 5900 7430 50  0000 L CNN
-F 2 "MountingHole:MountingHole_4.3mm_M4" H 5800 7475 50  0001 C CNN
-F 3 "~" H 5800 7475 50  0001 C CNN
-	1    5800 7475
-	1    0    0    -1  
-$EndComp
-$Comp
 L incubator_bottom-rescue:+12V-power #PWR0105
 U 1 1 6111A394
 P 5050 3850
@@ -741,8 +697,6 @@ Text Notes 7875 3050 0    150  ~ 0
 ONE-WIRE\nTEMPERATURE\nSENSOR
 Text Notes 3600 7000 0    50   ~ 0
 EXTERNAL HOLES
-Text Notes 5500 7000 0    50   ~ 0
-FAN HOLES
 Text Notes 4675 6850 0    102  ~ 0
 HOLES
 Text Notes 1950 5250 0    102  ~ 0
@@ -877,19 +831,8 @@ Text Notes 3125 4300 0    150  ~ 0
 TOP-BOTTOM\nCONNECTOR
 Wire Notes Line
 	475  3325 5925 3325
-$Comp
-L Incubator:HSC1004R0J R7
-U 1 1 610E9CE6
-P 8475 5300
-F 0 "R7" H 8545 5346 50  0000 L CNN
-F 1 "HSC1004R0J" H 8545 5255 50  0000 L CNN
-F 2 "Incubator:HSC1004R0J" V 8405 5300 50  0001 C CNN
-F 3 "https://www.mouser.com/datasheet/2/418/5/ENG_CD_1625999_AH2-1990035.pdf" H 8475 5300 50  0001 C CNN
-	1    8475 5300
-	1    0    0    -1  
-$EndComp
-NoConn ~ 8475 5150
-NoConn ~ 8475 5450
+NoConn ~ 7700 5150
+NoConn ~ 7700 5450
 $Comp
 L incubator_bottom-rescue:C-Device C3
 U 1 1 61204B1D
@@ -1104,4 +1047,15 @@ Wire Wire Line
 	1700 2900 1775 2900
 Text Notes 3250 5275 0    102  ~ 0
 PID
+$Comp
+L Incubator:HSC1004R0J R?
+U 1 1 6141DEAF
+P 7700 5300
+F 0 "R?" H 7770 5346 50  0000 L CNN
+F 1 "HSC1004R0J" H 7770 5255 50  0000 L CNN
+F 2 "Incubator:100W4RJ" V 7630 5300 50  0001 C CNN
+F 3 "https://www.mouser.com/datasheet/2/418/5/ENG_CD_1625999_AH2-1990035.pdf" H 7700 5300 50  0001 C CNN
+	1    7700 5300
+	1    0    0    -1  
+$EndComp
 $EndSCHEMATC
