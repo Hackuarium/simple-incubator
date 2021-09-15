@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 1 2
+Sheet 1 3
 Title ""
 Date ""
 Rev ""
@@ -1091,4 +1091,56 @@ Wire Wire Line
 	4950 4200 5150 4200
 Wire Wire Line
 	5150 4350 4950 4350
+$Comp
+L incubator_bottom-rescue:MountingHole-Mechanical H5
+U 1 1 614A8308
+P 5000 7150
+F 0 "H5" H 5100 7196 50  0000 L CNN
+F 1 "MountingHole" H 5100 7105 50  0000 L CNN
+F 2 "MountingHole:MountingHole_3.2mm_M3" H 5000 7150 50  0001 C CNN
+F 3 "~" H 5000 7150 50  0001 C CNN
+	1    5000 7150
+	1    0    0    -1  
+$EndComp
+$Comp
+L incubator_bottom-rescue:MountingHole-Mechanical H6
+U 1 1 614A89BD
+P 5000 7450
+F 0 "H6" H 5100 7496 50  0000 L CNN
+F 1 "MountingHole" H 5100 7405 50  0000 L CNN
+F 2 "MountingHole:MountingHole_3.2mm_M3" H 5000 7450 50  0001 C CNN
+F 3 "~" H 5000 7450 50  0001 C CNN
+	1    5000 7450
+	1    0    0    -1  
+$EndComp
+$Comp
+L incubator_bottom-rescue:MountingHole-Mechanical H7
+U 1 1 614A8DD5
+P 5800 7150
+F 0 "H7" H 5900 7196 50  0000 L CNN
+F 1 "MountingHole" H 5900 7105 50  0000 L CNN
+F 2 "MountingHole:MountingHole_3.2mm_M3" H 5800 7150 50  0001 C CNN
+F 3 "~" H 5800 7150 50  0001 C CNN
+	1    5800 7150
+	1    0    0    -1  
+$EndComp
+$Comp
+L incubator_bottom-rescue:MountingHole-Mechanical H8
+U 1 1 614A963E
+P 5800 7450
+F 0 "H8" H 5900 7496 50  0000 L CNN
+F 1 "MountingHole" H 5900 7405 50  0000 L CNN
+F 2 "MountingHole:MountingHole_3.2mm_M3" H 5800 7450 50  0001 C CNN
+F 3 "~" H 5800 7450 50  0001 C CNN
+	1    5800 7450
+	1    0    0    -1  
+$EndComp
+Text Notes 5250 7000 0    50   ~ 0
+FAN HOLES
+$Sheet
+S 7850 4300 500  150 
+U 61425B26
+F0 "Sheet61425B25" 50
+F1 "5V.sch" 50
+$EndSheet
 $EndSCHEMATC

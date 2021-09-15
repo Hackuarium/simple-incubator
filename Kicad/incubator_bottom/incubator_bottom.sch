@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 1 2
+Sheet 1 3
 Title ""
 Date ""
 Rev ""
@@ -1137,4 +1137,49 @@ F 3 "~" H 5800 7450 50  0001 C CNN
 $EndComp
 Text Notes 5250 7000 0    50   ~ 0
 FAN HOLES
+$Sheet
+S 7850 4300 900  650 
+U 61425B26
+F0 "5V Step-down" 50
+F1 "5V.sch" 50
+F2 "VIN" I L 7850 4500 50 
+F3 "5V" O R 8750 4600 50 
+F4 "GND" I L 7850 4650 50 
+$EndSheet
+Text GLabel 7650 4500 0    50   Input ~ 0
+12V
+$Comp
+L incubator_bottom-rescue:GND-power #PWR01
+U 1 1 61433F4F
+P 7750 4750
+F 0 "#PWR01" H 7750 4500 50  0001 C CNN
+F 1 "GND" H 7755 4577 50  0000 C CNN
+F 2 "" H 7750 4750 50  0001 C CNN
+F 3 "" H 7750 4750 50  0001 C CNN
+	1    7750 4750
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7750 4750 7750 4650
+Wire Wire Line
+	7750 4650 7850 4650
+Wire Wire Line
+	7850 4500 7650 4500
+Text GLabel 9250 4600 2    50   Input ~ 0
+VIN
+$Comp
+L incubator_bottom-rescue:MBR0520LT-Diode D3
+U 1 1 61445FAB
+P 9000 4600
+F 0 "D3" H 9000 4383 50  0000 C CNN
+F 1 "MBR0520LT" H 9000 4474 50  0000 C CNN
+F 2 "Diode_SMD:D_SOD-123" H 9000 4425 50  0001 C CNN
+F 3 "http://www.onsemi.com/pub_link/Collateral/MBR0520LT1-D.PDF" H 9000 4600 50  0001 C CNN
+	1    9000 4600
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	9250 4600 9150 4600
+Wire Wire Line
+	8850 4600 8750 4600
 $EndSCHEMATC
