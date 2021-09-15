@@ -209,35 +209,23 @@ F 3 "~" H 4100 7475 50  0001 C CNN
 	1    4100 7475
 	1    0    0    -1  
 $EndComp
-Text GLabel 4950 3925 0    50   Input ~ 0
+Text GLabel 4950 3900 0    50   Input ~ 0
 12V
-Wire Wire Line
-	5125 3925 5050 3925
-Wire Wire Line
-	5050 3925 5050 3850
 $Comp
 L incubator_bottom-rescue:GND-power #PWR0102
 U 1 1 611DACB0
-P 5050 4400
-F 0 "#PWR0102" H 5050 4150 50  0001 C CNN
-F 1 "GND" H 5055 4227 50  0000 C CNN
-F 2 "" H 5050 4400 50  0001 C CNN
-F 3 "" H 5050 4400 50  0001 C CNN
-	1    5050 4400
+P 5050 4450
+F 0 "#PWR0102" H 5050 4200 50  0001 C CNN
+F 1 "GND" H 5055 4277 50  0000 C CNN
+F 2 "" H 5050 4450 50  0001 C CNN
+F 3 "" H 5050 4450 50  0001 C CNN
+	1    5050 4450
 	1    0    0    -1  
 $EndComp
-Wire Wire Line
-	5125 4125 5050 4125
-Wire Wire Line
-	5050 4125 5050 4400
-Text GLabel 4950 4225 0    50   Input ~ 0
+Text GLabel 4950 4200 0    50   Input ~ 0
 SDA
-Text GLabel 4950 4325 0    50   Input ~ 0
+Text GLabel 4950 4350 0    50   Input ~ 0
 SCL
-Wire Wire Line
-	5125 4325 4950 4325
-Wire Wire Line
-	4950 4225 5125 4225
 $Comp
 L incubator_bottom-rescue:AudioJack3_SwitchTR-Connector J5
 U 1 1 610A289E
@@ -337,17 +325,14 @@ NoConn ~ 7650 1475
 $Comp
 L incubator_bottom-rescue:+12V-power #PWR0105
 U 1 1 6111A394
-P 5050 3850
-F 0 "#PWR0105" H 5050 3700 50  0001 C CNN
-F 1 "+12V" H 5065 4023 50  0000 C CNN
-F 2 "" H 5050 3850 50  0001 C CNN
-F 3 "" H 5050 3850 50  0001 C CNN
-	1    5050 3850
+P 5050 3800
+F 0 "#PWR0105" H 5050 3650 50  0001 C CNN
+F 1 "+12V" H 5065 3973 50  0000 C CNN
+F 2 "" H 5050 3800 50  0001 C CNN
+F 3 "" H 5050 3800 50  0001 C CNN
+	1    5050 3800
 	1    0    0    -1  
 $EndComp
-Wire Wire Line
-	4950 3925 5050 3925
-Connection ~ 5050 3925
 $Comp
 L incubator_bottom-rescue:+12V-power #PWR0108
 U 1 1 61121502
@@ -701,17 +686,6 @@ Text Notes 4675 6850 0    102  ~ 0
 HOLES
 Text Notes 1950 5250 0    102  ~ 0
 FAN
-$Comp
-L incubator_bottom-rescue:Conn_01x05-Connector_Generic J4
-U 1 1 6118C3B2
-P 5325 4125
-F 0 "J4" H 5405 4167 50  0000 L CNN
-F 1 "Conn_01x05" H 5405 4076 50  0000 L CNN
-F 2 "Connector_PinHeader_2.54mm:PinHeader_1x05_P2.54mm_Vertical" H 5325 4125 50  0001 C CNN
-F 3 "~" H 5325 4125 50  0001 C CNN
-	1    5325 4125
-	1    0    0    -1  
-$EndComp
 Text GLabel 4750 1025 2    50   Input ~ 0
 C0
 Text GLabel 4750 1125 2    50   Input ~ 0
@@ -1048,17 +1022,6 @@ Wire Wire Line
 Text Notes 3250 5275 0    102  ~ 0
 PID
 $Comp
-L Incubator:HSC1004R0J R15
-U 1 1 61434FDD
-P 6450 5250
-F 0 "R15" H 6520 5296 50  0000 L CNN
-F 1 "100W4RJ" H 6520 5205 50  0000 L CNN
-F 2 "Incubator:100W4RJ" V 6380 5250 50  0001 C CNN
-F 3 "https://www.mouser.com/datasheet/2/418/5/ENG_CD_1625999_AH2-1990035.pdf" H 6450 5250 50  0001 C CNN
-	1    6450 5250
-	1    0    0    -1  
-$EndComp
-$Comp
 L Incubator:HSC1004R0J R7
 U 1 1 61442D39
 P 7700 5300
@@ -1069,6 +1032,109 @@ F 3 "https://www.mouser.com/datasheet/2/418/5/ENG_CD_1625999_AH2-1990035.pdf" H 
 	1    7700 5300
 	1    0    0    -1  
 $EndComp
-NoConn ~ 6450 5100
-NoConn ~ 6450 5400
+$Comp
+L Connector_Generic:Conn_01x01 J4
+U 1 1 61426717
+P 5350 3900
+F 0 "J4" H 5430 3942 50  0000 L CNN
+F 1 "Conn_01x01" H 5430 3851 50  0000 L CNN
+F 2 "Connector_Wire:SolderWirePad_1x01_SMD_5x10mm" H 5350 3900 50  0001 C CNN
+F 3 "~" H 5350 3900 50  0001 C CNN
+	1    5350 3900
+	1    0    0    -1  
+$EndComp
+$Comp
+L Connector_Generic:Conn_01x01 J11
+U 1 1 614274D6
+P 5350 4350
+F 0 "J11" H 5430 4392 50  0000 L CNN
+F 1 "Conn_01x01" H 5430 4301 50  0000 L CNN
+F 2 "Connector_Wire:SolderWirePad_1x01_SMD_5x10mm" H 5350 4350 50  0001 C CNN
+F 3 "~" H 5350 4350 50  0001 C CNN
+	1    5350 4350
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4950 3900 5050 3900
+Wire Wire Line
+	5050 3800 5050 3900
+Connection ~ 5050 3900
+Wire Wire Line
+	5050 3900 5150 3900
+Wire Wire Line
+	5150 4050 5050 4050
+$Comp
+L Connector_Generic:Conn_01x01 J10
+U 1 1 61427056
+P 5350 4200
+F 0 "J10" H 5430 4242 50  0000 L CNN
+F 1 "Conn_01x01" H 5430 4151 50  0000 L CNN
+F 2 "Connector_Wire:SolderWirePad_1x01_SMD_5x10mm" H 5350 4200 50  0001 C CNN
+F 3 "~" H 5350 4200 50  0001 C CNN
+	1    5350 4200
+	1    0    0    -1  
+$EndComp
+$Comp
+L Connector_Generic:Conn_01x01 J9
+U 1 1 61426C44
+P 5350 4050
+F 0 "J9" H 5430 4092 50  0000 L CNN
+F 1 "Conn_01x01" H 5430 4001 50  0000 L CNN
+F 2 "Connector_Wire:SolderWirePad_1x01_SMD_5x10mm" H 5350 4050 50  0001 C CNN
+F 3 "~" H 5350 4050 50  0001 C CNN
+	1    5350 4050
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5050 4450 5050 4050
+Wire Wire Line
+	4950 4200 5150 4200
+Wire Wire Line
+	5150 4350 4950 4350
+$Comp
+L incubator_bottom-rescue:MountingHole-Mechanical H5
+U 1 1 614A8308
+P 5000 7150
+F 0 "H5" H 5100 7196 50  0000 L CNN
+F 1 "MountingHole" H 5100 7105 50  0000 L CNN
+F 2 "MountingHole:MountingHole_3.2mm_M3" H 5000 7150 50  0001 C CNN
+F 3 "~" H 5000 7150 50  0001 C CNN
+	1    5000 7150
+	1    0    0    -1  
+$EndComp
+$Comp
+L incubator_bottom-rescue:MountingHole-Mechanical H6
+U 1 1 614A89BD
+P 5000 7450
+F 0 "H6" H 5100 7496 50  0000 L CNN
+F 1 "MountingHole" H 5100 7405 50  0000 L CNN
+F 2 "MountingHole:MountingHole_3.2mm_M3" H 5000 7450 50  0001 C CNN
+F 3 "~" H 5000 7450 50  0001 C CNN
+	1    5000 7450
+	1    0    0    -1  
+$EndComp
+$Comp
+L incubator_bottom-rescue:MountingHole-Mechanical H7
+U 1 1 614A8DD5
+P 5800 7150
+F 0 "H7" H 5900 7196 50  0000 L CNN
+F 1 "MountingHole" H 5900 7105 50  0000 L CNN
+F 2 "MountingHole:MountingHole_3.2mm_M3" H 5800 7150 50  0001 C CNN
+F 3 "~" H 5800 7150 50  0001 C CNN
+	1    5800 7150
+	1    0    0    -1  
+$EndComp
+$Comp
+L incubator_bottom-rescue:MountingHole-Mechanical H8
+U 1 1 614A963E
+P 5800 7450
+F 0 "H8" H 5900 7496 50  0000 L CNN
+F 1 "MountingHole" H 5900 7405 50  0000 L CNN
+F 2 "MountingHole:MountingHole_3.2mm_M3" H 5800 7450 50  0001 C CNN
+F 3 "~" H 5800 7450 50  0001 C CNN
+	1    5800 7450
+	1    0    0    -1  
+$EndComp
+Text Notes 5250 7000 0    50   ~ 0
+FAN HOLES
 $EndSCHEMATC
