@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 1 3
+Sheet 1 2
 Title ""
 Date ""
 Rev ""
@@ -591,9 +591,9 @@ C2
 Text GLabel 4750 1325 2    50   Input ~ 0
 C3
 Text GLabel 4750 2200 2    50   Input ~ 0
-FAN
-Text GLabel 4750 2100 2    50   Input ~ 0
 PID
+Text GLabel 4750 2100 2    50   Input ~ 0
+FAN
 Text GLabel 4750 2000 2    50   Input ~ 0
 D5
 Text GLabel 4750 1900 2    50   Input ~ 0
@@ -1005,51 +1005,40 @@ F 3 "~" H 5800 7450 50  0001 C CNN
 $EndComp
 Text Notes 5250 7000 0    50   ~ 0
 FAN HOLES
-$Sheet
-S 1100 4000 900  650 
-U 61425B26
-F0 "5V Step-down" 50
-F1 "5V.sch" 50
-F2 "VIN" I L 1100 4200 50 
-F3 "5V" O R 2000 4300 50 
-F4 "GND" I L 1100 4350 50 
-$EndSheet
-Text GLabel 900  4200 0    50   Input ~ 0
+Text GLabel 1050 3850 0    50   Input ~ 0
 12V
 $Comp
 L incubator_bottom-rescue:GND-power #PWR01
 U 1 1 61433F4F
-P 1000 4450
-F 0 "#PWR01" H 1000 4200 50  0001 C CNN
-F 1 "GND" H 1005 4277 50  0000 C CNN
-F 2 "" H 1000 4450 50  0001 C CNN
-F 3 "" H 1000 4450 50  0001 C CNN
-	1    1000 4450
+P 1550 4450
+F 0 "#PWR01" H 1550 4200 50  0001 C CNN
+F 1 "GND" H 1555 4277 50  0000 C CNN
+F 2 "" H 1550 4450 50  0001 C CNN
+F 3 "" H 1550 4450 50  0001 C CNN
+	1    1550 4450
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	1000 4450 1000 4350
+	1550 4450 1550 4350
 Wire Wire Line
-	1000 4350 1100 4350
-Wire Wire Line
-	1100 4200 900  4200
-Text GLabel 2500 4300 2    50   Input ~ 0
+	1250 3850 1150 3850
+Text GLabel 2500 3850 2    50   Input ~ 0
 VIN
 $Comp
 L incubator_bottom-rescue:MBR0520LT-Diode D3
 U 1 1 61445FAB
-P 2250 4300
-F 0 "D3" H 2250 4083 50  0000 C CNN
-F 1 "MBR0520LT" H 2250 4174 50  0000 C CNN
-F 2 "Diode_SMD:D_SOD-123" H 2250 4125 50  0001 C CNN
-F 3 "http://www.onsemi.com/pub_link/Collateral/MBR0520LT1-D.PDF" H 2250 4300 50  0001 C CNN
-	1    2250 4300
+P 2250 3850
+F 0 "D3" H 2250 3633 50  0000 C CNN
+F 1 "MBR0520LT" H 2250 3724 50  0000 C CNN
+F 2 "Diode_SMD:D_SOD-123" H 2250 3675 50  0001 C CNN
+F 3 "http://www.onsemi.com/pub_link/Collateral/MBR0520LT1-D.PDF" H 2250 3850 50  0001 C CNN
+	1    2250 3850
 	-1   0    0    1   
 $EndComp
 Wire Wire Line
-	2500 4300 2400 4300
+	2500 3850 2400 3850
 Wire Wire Line
-	2100 4300 2000 4300
+	1950 3850 1850 3850
 $Comp
 L Connector_Generic:Conn_01x01 J7
 U 1 1 614B662C
@@ -1080,108 +1069,8 @@ Wire Notes Line
 	3000 475  3000 6550
 Text Notes 650  3550 0    102  ~ 0
 5V STEP-DOWN CONVERTER
-Text Notes 1950 5375 0    150  ~ 0
-I2C\n
 Wire Notes Line
 	475  4850 5925 4850
-$Comp
-L incubator_bottom-rescue:RJ12-Connector J3
-U 1 1 610CF354
-P 2050 5900
-F 0 "J3" H 1720 5904 50  0000 R CNN
-F 1 "RJ12" H 1720 5995 50  0000 R CNN
-F 2 "Incubator:E5566-Q0LK22-L" V 2050 5925 50  0001 C CNN
-F 3 "~" V 2050 5925 50  0001 C CNN
-	1    2050 5900
-	-1   0    0    1   
-$EndComp
-Text GLabel 1600 5625 1    50   Input ~ 0
-12V
-$Comp
-L incubator_bottom-rescue:R-Device R2
-U 1 1 610DBA03
-P 1375 5575
-F 0 "R2" H 1445 5621 50  0000 L CNN
-F 1 "10k" H 1445 5530 50  0000 L CNN
-F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder" V 1305 5575 50  0001 C CNN
-F 3 "~" H 1375 5575 50  0001 C CNN
-	1    1375 5575
-	1    0    0    -1  
-$EndComp
-$Comp
-L incubator_bottom-rescue:R-Device R1
-U 1 1 610DC2A0
-P 1100 5575
-F 0 "R1" H 1170 5621 50  0000 L CNN
-F 1 "10k" H 1170 5530 50  0000 L CNN
-F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder" V 1030 5575 50  0001 C CNN
-F 3 "~" H 1100 5575 50  0001 C CNN
-	1    1100 5575
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	1650 5700 1600 5700
-Wire Wire Line
-	1600 5700 1600 5625
-Text GLabel 1000 5800 0    50   Input ~ 0
-SCL
-Text GLabel 1000 5900 0    50   Input ~ 0
-SDA
-$Comp
-L incubator_bottom-rescue:GND-power #PWR0115
-U 1 1 610DD35E
-P 1575 6275
-F 0 "#PWR0115" H 1575 6025 50  0001 C CNN
-F 1 "GND" H 1580 6102 50  0000 C CNN
-F 2 "" H 1575 6275 50  0001 C CNN
-F 3 "" H 1575 6275 50  0001 C CNN
-	1    1575 6275
-	1    0    0    -1  
-$EndComp
-NoConn ~ 1650 6100
-Wire Wire Line
-	1650 6000 1575 6000
-Wire Wire Line
-	1575 6000 1575 6200
-Connection ~ 1575 6200
-Wire Wire Line
-	1650 6200 1575 6200
-Wire Wire Line
-	1575 6200 1575 6275
-Wire Wire Line
-	1650 5900 1100 5900
-Connection ~ 1100 5900
-Wire Wire Line
-	1650 5800 1375 5800
-Connection ~ 1375 5800
-Wire Wire Line
-	1375 5800 1375 5725
-Wire Wire Line
-	1000 5800 1375 5800
-Wire Wire Line
-	1100 5725 1100 5900
-Wire Wire Line
-	1100 5900 1000 5900
-$Comp
-L incubator_bottom-rescue:VCC-power #PWR0114
-U 1 1 610EC2F5
-P 1100 5325
-F 0 "#PWR0114" H 1100 5175 50  0001 C CNN
-F 1 "VCC" H 1115 5498 50  0000 C CNN
-F 2 "" H 1100 5325 50  0001 C CNN
-F 3 "" H 1100 5325 50  0001 C CNN
-	1    1100 5325
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	1375 5425 1375 5375
-Wire Wire Line
-	1375 5375 1100 5375
-Connection ~ 1100 5375
-Wire Wire Line
-	1100 5375 1100 5325
-Wire Wire Line
-	1100 5425 1100 5375
 Wire Notes Line
 	500  6550 5900 6550
 $Comp
@@ -1199,4 +1088,58 @@ NoConn ~ 4650 6300
 NoConn ~ 4650 6000
 Text Notes 4500 6500 0    50   ~ 0
 Power Resistor\n100 W 4 Ohm
+$Comp
+L Regulator_Linear:LM78M05_TO252 U5
+U 1 1 6152567E
+P 1550 3850
+F 0 "U5" H 1550 4092 50  0000 C CNN
+F 1 "LM78M05_TO252" H 1550 4001 50  0000 C CNN
+F 2 "Package_TO_SOT_SMD:TO-252-2" H 1550 4075 50  0001 C CIN
+F 3 "https://www.onsemi.com/pub/Collateral/MC78M00-D.PDF" H 1550 3800 50  0001 C CNN
+	1    1550 3850
+	1    0    0    -1  
+$EndComp
+$Comp
+L incubator_bottom-rescue:C-Device C6
+U 1 1 61544A4B
+P 1150 4100
+F 0 "C6" H 1265 4146 50  0000 L CNN
+F 1 "0.33u" H 1265 4055 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder" H 1188 3950 50  0001 C CNN
+F 3 "~" H 1150 4100 50  0001 C CNN
+	1    1150 4100
+	1    0    0    -1  
+$EndComp
+$Comp
+L incubator_bottom-rescue:C-Device C7
+U 1 1 6154606C
+P 1950 4100
+F 0 "C7" H 2065 4146 50  0000 L CNN
+F 1 "0.1u" H 2065 4055 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder" H 1988 3950 50  0001 C CNN
+F 3 "~" H 1950 4100 50  0001 C CNN
+	1    1950 4100
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	1950 3850 1950 3950
+Wire Wire Line
+	2100 3850 1950 3850
+Connection ~ 1950 3850
+Wire Wire Line
+	1150 3950 1150 3850
+Connection ~ 1150 3850
+Wire Wire Line
+	1150 3850 1050 3850
+Wire Wire Line
+	1150 4250 1150 4350
+Wire Wire Line
+	1150 4350 1550 4350
+Connection ~ 1550 4350
+Wire Wire Line
+	1550 4350 1550 4150
+Wire Wire Line
+	1950 4250 1950 4350
+Wire Wire Line
+	1950 4350 1550 4350
 $EndSCHEMATC
