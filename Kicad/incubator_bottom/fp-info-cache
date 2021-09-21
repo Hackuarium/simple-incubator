@@ -1,4 +1,4 @@
-19212224303699911
+19213856516644911
 Battery
 BatteryHolder_Bulgin_BX0036_1xC
 Bulgin Battery Holder, BX0036, Battery Type C (https://www.bulgin.com/products/pub/media/bulgin/data/Battery_holders.pdf)
@@ -51687,6 +51687,13 @@ R res resistor Wirewound
 0
 4
 2
+Incubator
+logoHackuarium
+
+
+0
+0
+0
 Inductor_SMD
 L_6.3x6.3_H3
 Choke, SMD, 6.3x6.3mm 3mm height

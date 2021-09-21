@@ -16,12 +16,12 @@ $EndDescr
 $Comp
 L incubator_bottom-rescue:DS18B20-Sensor_Temperature U2
 U 1 1 60FFAE4A
-P 10275 2875
-F 0 "U2" H 10175 2625 50  0000 R CNN
-F 1 "DS18B20" H 10175 2550 50  0000 R CNN
-F 2 "Package_TO_SOT_THT:TO-92_Inline" H 9275 2625 50  0001 C CNN
-F 3 "http://datasheets.maximintegrated.com/en/ds/DS18B20.pdf" H 10125 3125 50  0001 C CNN
-	1    10275 2875
+P 9975 2825
+F 0 "U2" H 9875 2575 50  0000 R CNN
+F 1 "DS18B20" H 9875 2500 50  0000 R CNN
+F 2 "Package_TO_SOT_THT:TO-92_Inline" H 8975 2575 50  0001 C CNN
+F 3 "http://datasheets.maximintegrated.com/en/ds/DS18B20.pdf" H 9825 3075 50  0001 C CNN
+	1    9975 2825
 	1    0    0    -1  
 $EndComp
 $Comp
@@ -60,56 +60,56 @@ $EndComp
 $Comp
 L incubator_bottom-rescue:R-Device R11
 U 1 1 61064BC7
-P 10650 2675
-F 0 "R11" H 10720 2721 50  0000 L CNN
-F 1 "4.7k" H 10720 2630 50  0000 L CNN
-F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder" V 10580 2675 50  0001 C CNN
-F 3 "~" H 10650 2675 50  0001 C CNN
-	1    10650 2675
+P 10350 2625
+F 0 "R11" H 10420 2671 50  0000 L CNN
+F 1 "4.7k" H 10420 2580 50  0000 L CNN
+F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder" V 10280 2625 50  0001 C CNN
+F 3 "~" H 10350 2625 50  0001 C CNN
+	1    10350 2625
 	1    0    0    -1  
 $EndComp
 $Comp
 L incubator_bottom-rescue:VCC-power #PWR0109
 U 1 1 6106C48E
-P 10275 2375
-F 0 "#PWR0109" H 10275 2225 50  0001 C CNN
-F 1 "VCC" H 10290 2548 50  0000 C CNN
-F 2 "" H 10275 2375 50  0001 C CNN
-F 3 "" H 10275 2375 50  0001 C CNN
-	1    10275 2375
+P 9975 2325
+F 0 "#PWR0109" H 9975 2175 50  0001 C CNN
+F 1 "VCC" H 9990 2498 50  0000 C CNN
+F 2 "" H 9975 2325 50  0001 C CNN
+F 3 "" H 9975 2325 50  0001 C CNN
+	1    9975 2325
 	1    0    0    -1  
 $EndComp
 $Comp
 L incubator_bottom-rescue:GND-power #PWR0110
 U 1 1 6107013F
-P 10275 3275
-F 0 "#PWR0110" H 10275 3025 50  0001 C CNN
-F 1 "GND" H 10280 3102 50  0000 C CNN
-F 2 "" H 10275 3275 50  0001 C CNN
-F 3 "" H 10275 3275 50  0001 C CNN
-	1    10275 3275
+P 9975 3225
+F 0 "#PWR0110" H 9975 2975 50  0001 C CNN
+F 1 "GND" H 9980 3052 50  0000 C CNN
+F 2 "" H 9975 3225 50  0001 C CNN
+F 3 "" H 9975 3225 50  0001 C CNN
+	1    9975 3225
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	10275 3275 10275 3175
-Text GLabel 10775 2875 2    50   Input ~ 0
-ONE-WIRE
+	9975 3225 9975 3125
+Text GLabel 10475 2825 2    50   Input ~ 0
+ONE-WIRE-2
 Wire Wire Line
-	10775 2875 10650 2875
+	10475 2825 10350 2825
 Wire Wire Line
-	10275 2375 10275 2475
+	9975 2325 9975 2425
 Wire Wire Line
-	10650 2525 10650 2475
+	10350 2475 10350 2425
 Wire Wire Line
-	10650 2475 10275 2475
-Connection ~ 10275 2475
+	10350 2425 9975 2425
+Connection ~ 9975 2425
 Wire Wire Line
-	10275 2475 10275 2575
+	9975 2425 9975 2525
 Wire Wire Line
-	10650 2825 10650 2875
-Connection ~ 10650 2875
+	10350 2775 10350 2825
+Connection ~ 10350 2825
 Wire Wire Line
-	10650 2875 10575 2875
+	10350 2825 10275 2825
 Wire Wire Line
 	6700 2275 6700 2350
 Wire Wire Line
@@ -120,7 +120,7 @@ Connection ~ 6700 2350
 Wire Wire Line
 	6700 2350 6700 2450
 Text GLabel 7150 2750 2    50   Input ~ 0
-ONE-WIRE
+ONE-WIRE-1
 Wire Wire Line
 	7150 2750 7050 2750
 Wire Wire Line
@@ -317,7 +317,7 @@ Connection ~ 7150 1450
 Wire Wire Line
 	7150 1450 7150 1275
 Text GLabel 6700 1450 0    50   Input ~ 0
-ONE-WIRE
+ONE-WIRE-4
 Wire Wire Line
 	6700 1450 6775 1450
 NoConn ~ 7650 1675
@@ -539,7 +539,7 @@ F 3 "~" H 9150 1425 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 Text GLabel 8925 1425 0    50   Input ~ 0
-ONE-WIRE
+ONE-WIRE-3
 Wire Wire Line
 	9800 1175 9800 1250
 Wire Wire Line
@@ -583,13 +583,13 @@ HOLES
 Text Notes 3150 5150 0    102  ~ 0
 FAN
 Text GLabel 4750 1025 2    50   Input ~ 0
-C0
+ONE-WIRE-4
 Text GLabel 4750 1125 2    50   Input ~ 0
-C1
+ONE-WIRE-3
 Text GLabel 4750 1225 2    50   Input ~ 0
-C2
+ONE-WIRE-2
 Text GLabel 4750 1325 2    50   Input ~ 0
-C3
+ONE-WIRE-1
 Text GLabel 4750 2200 2    50   Input ~ 0
 PID
 Text GLabel 4750 2100 2    50   Input ~ 0
@@ -601,7 +601,7 @@ D4
 Text GLabel 4750 1800 2    50   Input ~ 0
 D3
 Text GLabel 4750 1700 2    50   Input ~ 0
-ONE-WIRE
+D2
 Text GLabel 4750 1600 2    50   Input ~ 0
 TX
 Text GLabel 4750 2850 2    50   Input ~ 0
@@ -1005,7 +1005,7 @@ F 3 "~" H 5800 7450 50  0001 C CNN
 $EndComp
 Text Notes 5250 7000 0    50   ~ 0
 FAN HOLES
-Text GLabel 1050 3850 0    50   Input ~ 0
+Text GLabel 1000 3850 0    50   Input ~ 0
 12V
 $Comp
 L incubator_bottom-rescue:GND-power #PWR01
@@ -1021,7 +1021,7 @@ $EndComp
 Wire Wire Line
 	1550 4450 1550 4350
 Wire Wire Line
-	1250 3850 1150 3850
+	1250 3850 1100 3850
 Text GLabel 2500 3850 2    50   Input ~ 0
 VIN
 $Comp
@@ -1084,8 +1084,6 @@ F 3 "https://www.mouser.com/datasheet/2/418/5/ENG_CD_1625999_AH2-1990035.pdf" H 
 	1    4650 6150
 	1    0    0    -1  
 $EndComp
-NoConn ~ 4650 6300
-NoConn ~ 4650 6000
 Text Notes 4500 6500 0    50   ~ 0
 Power Resistor\n100 W 4 Ohm
 $Comp
@@ -1102,12 +1100,12 @@ $EndComp
 $Comp
 L incubator_bottom-rescue:C-Device C6
 U 1 1 61544A4B
-P 1150 4100
-F 0 "C6" H 1265 4146 50  0000 L CNN
-F 1 "0.33u" H 1265 4055 50  0000 L CNN
-F 2 "Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder" H 1188 3950 50  0001 C CNN
-F 3 "~" H 1150 4100 50  0001 C CNN
-	1    1150 4100
+P 1100 4100
+F 0 "C6" H 1215 4146 50  0000 L CNN
+F 1 "0.33u" H 1215 4055 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder" H 1138 3950 50  0001 C CNN
+F 3 "~" H 1100 4100 50  0001 C CNN
+	1    1100 4100
 	1    0    0    -1  
 $EndComp
 $Comp
@@ -1127,14 +1125,14 @@ Wire Wire Line
 	2100 3850 1950 3850
 Connection ~ 1950 3850
 Wire Wire Line
-	1150 3950 1150 3850
-Connection ~ 1150 3850
+	1100 3950 1100 3850
+Connection ~ 1100 3850
 Wire Wire Line
-	1150 3850 1050 3850
+	1100 3850 1000 3850
 Wire Wire Line
-	1150 4250 1150 4350
+	1100 4250 1100 4350
 Wire Wire Line
-	1150 4350 1550 4350
+	1100 4350 1550 4350
 Connection ~ 1550 4350
 Wire Wire Line
 	1550 4350 1550 4150
@@ -1142,4 +1140,102 @@ Wire Wire Line
 	1950 4250 1950 4350
 Wire Wire Line
 	1950 4350 1550 4350
+NoConn ~ 4650 6000
+NoConn ~ 4650 6300
+Text Notes 700  5325 0    118  ~ 0
+Power LEDS
+$Comp
+L Device:R R?
+U 1 1 615134F4
+P 2000 5850
+AR Path="/5E0D7B92/615134F4" Ref="R?"  Part="1" 
+AR Path="/5E0D7D04/615134F4" Ref="R?"  Part="1" 
+AR Path="/615134F4" Ref="R2"  Part="1" 
+AR Path="/5E0005EE/615134F4" Ref="R?"  Part="1" 
+AR Path="/614262A1/615134F4" Ref="R?"  Part="1" 
+AR Path="/61425B26/615134F4" Ref="R?"  Part="1" 
+AR Path="/6150A405/615134F4" Ref="R?"  Part="1" 
+F 0 "R2" V 1925 5850 50  0000 C CNN
+F 1 "1k" V 2000 5850 50  0000 C CNN
+F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder" V 1930 5850 50  0001 C CNN
+F 3 "~" H 2000 5850 50  0001 C CNN
+	1    2000 5850
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:LED D?
+U 1 1 61513507
+P 1500 5500
+AR Path="/6150A405/61513507" Ref="D?"  Part="1" 
+AR Path="/61513507" Ref="D4"  Part="1" 
+F 0 "D4" H 1500 5425 50  0000 C CNN
+F 1 "GREEN" H 1500 5600 50  0000 C CNN
+F 2 "LED_SMD:LED_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 1500 5500 50  0001 C CNN
+F 3 "~" H 1500 5500 50  0001 C CNN
+	1    1500 5500
+	1    0    0    1   
+$EndComp
+Text GLabel 2300 5500 2    50   Input ~ 0
+12V
+$Comp
+L Device:R R?
+U 1 1 615134EC
+P 2000 5500
+AR Path="/5E0D7B92/615134EC" Ref="R?"  Part="1" 
+AR Path="/5E0D7D04/615134EC" Ref="R?"  Part="1" 
+AR Path="/615134EC" Ref="R1"  Part="1" 
+AR Path="/5E0005EE/615134EC" Ref="R?"  Part="1" 
+AR Path="/614262A1/615134EC" Ref="R?"  Part="1" 
+AR Path="/61425B26/615134EC" Ref="R?"  Part="1" 
+AR Path="/6150A405/615134EC" Ref="R?"  Part="1" 
+F 0 "R1" V 1925 5500 50  0000 C CNN
+F 1 "10k" V 2000 5500 50  0000 C CNN
+F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder" V 1930 5500 50  0001 C CNN
+F 3 "~" H 2000 5500 50  0001 C CNN
+	1    2000 5500
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	2300 5500 2150 5500
+Wire Wire Line
+	1850 5500 1650 5500
+$Comp
+L Device:LED D?
+U 1 1 6151350D
+P 1500 5850
+AR Path="/6150A405/6151350D" Ref="D?"  Part="1" 
+AR Path="/6151350D" Ref="D5"  Part="1" 
+F 0 "D5" H 1500 5775 50  0000 C CNN
+F 1 "GREEN" H 1500 5950 50  0000 C CNN
+F 2 "LED_SMD:LED_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 1500 5850 50  0001 C CNN
+F 3 "~" H 1500 5850 50  0001 C CNN
+	1    1500 5850
+	1    0    0    1   
+$EndComp
+Text GLabel 2300 5850 2    50   Input ~ 0
+VIN
+Wire Wire Line
+	2300 5850 2150 5850
+Wire Wire Line
+	1850 5850 1650 5850
+$Comp
+L incubator_bottom-rescue:GND-power #PWR02
+U 1 1 61585C18
+P 1250 6000
+F 0 "#PWR02" H 1250 5750 50  0001 C CNN
+F 1 "GND" H 1255 5827 50  0000 C CNN
+F 2 "" H 1250 6000 50  0001 C CNN
+F 3 "" H 1250 6000 50  0001 C CNN
+	1    1250 6000
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	1350 5500 1250 5500
+Wire Wire Line
+	1250 5500 1250 5850
+Wire Wire Line
+	1350 5850 1250 5850
+Connection ~ 1250 5850
+Wire Wire Line
+	1250 5850 1250 6000
 $EndSCHEMATC
