@@ -6,20 +6,22 @@
 #ifdef THR_MONITORING
 
 THD_FUNCTION(ThreadMonitoring, arg) {
-  chThdSleep(8000);  // Do not start the watchdog too quickly
-  wdt_enable(WDTO_8S);            // activate the watchdog
-#ifdef MONITORING_LED
-  pinMode(MONITORING_LED, OUTPUT);  // diode pin out
-#endif
+  // we activate the watchdog
+  // we need to make a RESET all the time otherwise automatic reboot: wdt_reset();
+  wdt_enable(WDTO_8S);
 
-  while (true) {
-#ifdef MONITORING_LED
-    digitalWrite(MONITORING_LED, HIGH);
-    chThdSleep(500);
-    digitalWrite(MONITORING_LED, LOW);
-    chThdSleep(500);
-#endif
-    wdt_reset();  // resed avoid the automatic reboot
+  byte turnOn = 0;
+  pinMode(THR_MONITORING, OUTPUT);
+  while (TRUE) {
+    turnOn = ~turnOn;
+    digitalWrite(THR_MONITORING, turnOn);
+    chThdSleep(250);
+    if (getParameter(PARAM_STATUS) != 99) {
+      wdt_reset();
+    }
+    else {
+      chThdSleep(750);
+    }
   }
 }
 

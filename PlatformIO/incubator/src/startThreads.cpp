@@ -1,3 +1,5 @@
+#include <ChNil.h>
+
 #include "config.h"
 #include "monitoring.h"
 
@@ -17,8 +19,25 @@ THD_TABLE_BEGIN
 
 // logger should have priority to prevent any corruption of flash memory
 
-#ifdef THR_MONITORING
-      THD_TABLE_ENTRY(waThreadMonitoring, NULL, ThreadMonitoring, NULL)
+#ifdef THR_ERROR
+  THD_TABLE_ENTRY( waThreadError, NULL, ThreadError, NULL)
 #endif
+
+#ifdef THR_PID
+  THD_TABLE_ENTRY( waThreadPID, NULL, ThreadPID, NULL )
+#endif
+
+#ifdef THR_TEMP
+  THD_TABLE_ENTRY(waThreadTemperature, NULL, ThreadTemperature, NULL)
+#endif
+
+#ifdef THR_EEPROM_LOGGER
+  THD_TABLE_ENTRY(waThreadLogger, NULL, ThreadLogger, NULL)
+#endif
+
+#ifdef THR_MONITORING
+  THD_TABLE_ENTRY(waThreadMonitoring, NULL, ThreadMonitoring, NULL)
+#endif
+
 THD_TABLE_END
 //------------------------------------------------------------------------------
