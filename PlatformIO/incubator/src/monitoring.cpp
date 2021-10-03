@@ -11,17 +11,17 @@ THD_FUNCTION(ThreadMonitoring, arg) {
   wdt_enable(WDTO_8S);
 
   byte turnOn = 0;
-  pinMode(THR_MONITORING, OUTPUT);
+  pinMode(MONITORING_LED, OUTPUT);
   while (TRUE) {
     turnOn = ~turnOn;
-    digitalWrite(THR_MONITORING, turnOn);
+    digitalWrite(MONITORING_LED, turnOn);
     chThdSleep(250);
-    if (getParameter(PARAM_STATUS) != 99) {
+//    if (getParameter(PARAM_STATUS) != 99) {
       wdt_reset();
-    }
-    else {
+//    }
+//    else {
       chThdSleep(750);
-    }
+//    }
   }
 }
 

@@ -2,6 +2,7 @@
 
 #include "config.h"
 #include "monitoring.h"
+#include "error.h"
 
 /****************************************************************
                 NilRTOS Multithreading Table
