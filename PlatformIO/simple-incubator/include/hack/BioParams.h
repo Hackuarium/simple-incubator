@@ -24,12 +24,12 @@
 #define THR_ONEWIRE     1
 #define THR_PID         1
 #define THR_FAN         1
-#define THR_ERROR       1
+//#define THR_ERROR       1
 //#define THR_STEPPER     1
 #define THR_STEPS       1
 //#define THR_WEIGHT      1
 #define THR_OUTPUTS     1
-#define THR_MONITORING  1
+//#define THR_MONITORING  1
 
 
 
@@ -71,7 +71,7 @@
 #define OUT_4              12
 
 // FAN Thread
-#define OUT_FAN            11
+#define OUT_FAN            6
 #define TEMP_FAN_ON        3500
 
 // ERROR Thread
@@ -82,12 +82,13 @@
 #define WEIGHT_CLK         A0     //need to redefine the calibration parameters and process (see "HX711")
 
 // ONE WIRE Thread
-#define TEMP_EXT1          7
-#define TEMP_EXT2          A5
-#define TEMP_PCB           A2
+#define TEMP_EXT1          A0
+#define TEMP_EXT2          A1
+#define TEMP_PCB           A3
+#define TEMP_PCB2           A2  // Incubator resistor temperature (07102021)
 
 // PID Thread
-#define PID_CONTROL        6
+#define PID_CONTROL        7
 
 // EEPROM || SST Thread
 
@@ -119,6 +120,10 @@
 #define PARAM_WEIGHT_G                6  // G - in unit of the balance
 #define PARAM_WEIGHT_MIN              7  // I
 #define PARAM_WEIGHT_MAX              8  // J
+
+// Incubator 07102021
+#define PARAM_TEMP_PCB2       2   // K - temperature of the resistor
+
 #define PARAM_WEIGHT_FACTOR          29  //  - Weight calibration: conversion factor digital -> gr (weight=FACTOR*dig_unit)
 #define PARAM_WEIGHT_OFFSET          30  //  - Weight calibration: digital offset value when bioreactor is empty
 
@@ -149,6 +154,13 @@
 #define FLAG_WEIGHT_RANGE_ERROR         7   // the weight is outside range
 #define MASK_WEIGHT_ERROR               0b10000000  // where are the bit for weight error
 
+// Incubator
+#define PARAM_ERROR2        29              // AD - errors (for temperature of the resistor - Incubator - 07102021)
+#define FLAG_TEMP_PCB_PROBE_ERROR2       0    // pcb probe failed (one wire not answering)
+#define FLAG_TEMP_PCB_RANGE_ERROR2       3  // temperature of pcb is outside range
+#define FLAG_TEMP_TARGET_RANGE_ERROR    6   // target temperature is outside range
+#define MASK_TEMP_ERROR                 0b01001001  // where are the bit for temperature error
+
 #define PARAM_STATUS             25  // Z - currently active service
 #define PARAM_ENABLED            51  // AZ - enabled service (set by user)
 
@@ -159,6 +171,9 @@
 #define FLAG_OUTPUT_2            3
 #define FLAG_OUTPUT_3            4
 #define FLAG_OUTPUT_4            5
+
+// Incubator 07102021
+#define FLAG_FAN            6
 
 // value that should not be taken into account
 // in case of error the parameter is set to this value

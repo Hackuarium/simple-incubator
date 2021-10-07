@@ -9,6 +9,7 @@ void resetParameters() {
   setAndSaveParameter(PARAM_TEMP_EXT1, ERROR_VALUE);
   setAndSaveParameter(PARAM_TEMP_EXT2, ERROR_VALUE);
   setAndSaveParameter(PARAM_TEMP_PCB, ERROR_VALUE);
+  setAndSaveParameter(PARAM_TEMP_PCB2, ERROR_VALUE);  //   Incubator resistor temp - 07102021
   setAndSaveParameter(PARAM_TEMP_TARGET, 3000);
 
   setAndSaveParameter(PARAM_WEIGHT_MIN, 32767);
@@ -22,9 +23,10 @@ void resetParameters() {
     setAndSaveParameter(i, 0);
   }
 
-  int active = 1 << FLAG_STEPPER_CONTROL | 1 << FLAG_PID_CONTROL | 1 << FLAG_OUTPUT_1 | 1 << FLAG_OUTPUT_2 | 1 << FLAG_OUTPUT_3 | 1 << FLAG_OUTPUT_4;
+  int active = 1 << FLAG_STEPPER_CONTROL | 1 << FLAG_PID_CONTROL | 1 << FLAG_OUTPUT_1 | 1 << FLAG_OUTPUT_2 | 1 << FLAG_OUTPUT_3 | 1 << FLAG_OUTPUT_4 | 1 << FLAG_FAN;  // Incubator Fan - 07102021
 
   setAndSaveParameter(PARAM_STATUS, active);
   setAndSaveParameter(PARAM_ENABLED, active);
   setAndSaveParameter(PARAM_ERROR, 0);
+  setAndSaveParameter(PARAM_ERROR2, 0);   // Incubator param temp error - 07102021
 }

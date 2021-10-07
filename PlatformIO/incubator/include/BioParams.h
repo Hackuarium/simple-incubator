@@ -83,7 +83,7 @@
 #define PID_CONTROL        6
 
 
-//#define EVENT_LOGGING  1
+#define EVENT_LOGGING  1
 
 /******************************
   SERIAL, LOGGER AND DEBUGGERS

@@ -28,6 +28,14 @@ THD_FUNCTION( ThreadOutputs, arg ) {
     pinMode(OUT_4, OUTPUT);
     digitalWrite(OUT_4, getStatus(FLAG_OUTPUT_4) && isEnabled(FLAG_OUTPUT_4));
 #endif
+
+// Incubator - 07102021
+#ifdef PARAM_TEMP_PCB2
+    pinMode(OUT_FAN, OUTPUT);
+    digitalWrite(OUT_FAN, getStatus(FLAG_FAN) && isEnabled(FLAG_FAN));
+#endif
+
+
   }
 }
 

@@ -14,7 +14,6 @@
 
 #ifdef THR_EEPROM_LOGGER
   #include "EEPROMLogger.h"
-  #define EVENT_LOGGING 1
 #endif
 
 //extern const int PARAM_ERROR;
@@ -92,14 +91,14 @@ void setAndSaveParameter(byte number, int value) {
 bool saveAndLogError(boolean isError, byte errorFlag) {
   if (isError) {
     if (setParameterBit(PARAM_ERROR, errorFlag)) { // the status has changed
-      #ifdef EVENT_LOGGING
-        #ifdef THR_EEPROM_LOGGER
-        writeLog();
-        #else
-        writeLog(EVENT_ERROR_FAILED, errorFlag);
-        #endif
+    #ifdef EVENT_LOGGING
+      #ifdef THR_EEPROM_LOGGER
+      writeLog();
+      #else
+      writeLog(EVENT_ERROR_FAILED, errorFlag);
       #endif
-      return true;
+    #endif
+    return true;
     }
   } else {
     if (clearParameterBit(PARAM_ERROR, errorFlag)) { // the status has changed

@@ -60,7 +60,7 @@ void processSpecificCommand( char* data, char* paramValue, Print* output ) {
       }
       output->print(F("Enabled: "));
       output->println(getParameter(PARAM_ENABLED),BIN);
-      for (byte i = 0; i < 6; i++) {
+      for (byte i = 0; i <= 6; i++) { // For incubator resistor param
         output->print(i);
         output->print(": ");
         output->println(getParameterBit(PARAM_ENABLED, i));
