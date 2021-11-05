@@ -14,11 +14,11 @@ THD_FUNCTION( ThreadOutputs, arg ) {
 
 #ifdef OUT_1
     pinMode(OUT_1, OUTPUT);
-    digitalWrite(OUT_1, getStatus(FLAG_OUTPUT_1) && isEnabled(FLAG_OUTPUT_1));
+    digitalWrite(OUT_1, getStatus(FLAG_FOOD_CONTROL) && isEnabled(FLAG_OUTPUT_1) && getStatus(FLAG_RELAY_FILLING));
 #endif
 #ifdef OUT_2
     pinMode(OUT_2, OUTPUT);
-    digitalWrite(OUT_2, getStatus(FLAG_OUTPUT_2) && isEnabled(FLAG_OUTPUT_2));
+    digitalWrite(OUT_2, getStatus(FLAG_FOOD_CONTROL) && isEnabled(FLAG_OUTPUT_2) && getStatus(FLAG_RELAY_EMPTYING));
 #endif
 #ifdef OUT_3
     pinMode(OUT_3, OUTPUT);
@@ -28,14 +28,6 @@ THD_FUNCTION( ThreadOutputs, arg ) {
     pinMode(OUT_4, OUTPUT);
     digitalWrite(OUT_4, getStatus(FLAG_OUTPUT_4) && isEnabled(FLAG_OUTPUT_4));
 #endif
-
-// Incubator - 07102021
-#ifdef PARAM_TEMP_PCB2
-    pinMode(OUT_FAN, OUTPUT);
-    digitalWrite(OUT_FAN, getStatus(FLAG_FAN) && isEnabled(FLAG_FAN));
-#endif
-
-
   }
 }
 

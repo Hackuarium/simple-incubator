@@ -9,10 +9,7 @@
 
 void setFan() {
   int temperature = getParameter(PARAM_TEMP_PCB);
-
-  // Incubator - 07102021
-  int temperature2 = getParameter(PARAM_TEMP_PCB2);
-  if (temperature > TEMP_FAN_ON + 5000 | temperature2 > TEMP_FAN_ON) {
+  if (temperature > TEMP_FAN_ON) {
     analogWrite(OUT_FAN, 255);
   } else {
     analogWrite(OUT_FAN, 0);

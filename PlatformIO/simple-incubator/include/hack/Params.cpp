@@ -58,7 +58,11 @@ void saveParameters() {
     eeprom_write_word((uint16_t*) EE_START_PARAM + i, parameters[i]);
   }
   #ifdef EVENT_LOGGING
+    #ifdef THR_EEPROM_LOGGER
+    writeLog();
+    #else
     writeLog(EVENT_SAVE_ALL_PARAMETER, 0);
+    #endif
   #endif
 }
 
@@ -136,4 +140,3 @@ uint8_t printCompactParameters(Print* output, uint8_t number) {
 uint8_t printCompactParameters(Print* output) {
   return printCompactParameters(output, MAX_PARAM);
 }
-

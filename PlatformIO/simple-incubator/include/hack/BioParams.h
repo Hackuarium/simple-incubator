@@ -19,17 +19,17 @@
 *******************************/
 
 // #define THR_WIRE_MASTER 1
-//#define THR_SST_LOGGER  1
+#define THR_SST_LOGGER  1
 #define THR_SERIAL      1
 #define THR_ONEWIRE     1
 #define THR_PID         1
 #define THR_FAN         1
-//#define THR_ERROR       1
-//#define THR_STEPPER     1
+#define THR_ERROR       1
+#define THR_STEPPER     1
 #define THR_STEPS       1
-//#define THR_WEIGHT      1
+#define THR_WEIGHT      1
 #define THR_OUTPUTS     1
-//#define THR_MONITORING  1
+#define THR_MONITORING  1
 
 
 
@@ -71,7 +71,7 @@
 #define OUT_4              12
 
 // FAN Thread
-#define OUT_FAN            6
+#define OUT_FAN            11
 #define TEMP_FAN_ON        3500
 
 // ERROR Thread
@@ -82,15 +82,15 @@
 #define WEIGHT_CLK         A0     //need to redefine the calibration parameters and process (see "HX711")
 
 // ONE WIRE Thread
-#define TEMP_EXT1          A0
-#define TEMP_EXT2          A1
-#define TEMP_PCB           A3
-#define TEMP_PCB2           A2  // Incubator resistor temperature (07102021)
+#define TEMP_EXT1          7
+#define TEMP_EXT2          A5
+#define TEMP_PCB           A2
 
 // PID Thread
-#define PID_CONTROL        7
+#define PID_CONTROL        6
 
 // EEPROM || SST Thread
+#define EVENT_LOGGING  1
 
 /******************************
   SERIAL, LOGGER AND DEBUGGERS
@@ -104,9 +104,6 @@
   #define EVENT_LOGGING  1
 #endif
 
-#define PARAM_STEPPER_SPEED        26   // AA - motor speed, in RPM
-#define PARAM_STEPPER_SECONDS      27   // AB   number of seconds before changing direction
-#define PARAM_STEPPER_WAIT         28   // AC   wait time in seconds between change of direction
 
 
 #define PARAM_TEMP_EXT1      0   // A - temperature of the solution
@@ -118,14 +115,17 @@
 
 #define PARAM_WEIGHT                  5  // F - in unit of the balance
 #define PARAM_WEIGHT_G                6  // G - in unit of the balance
-#define PARAM_WEIGHT_MIN              7  // I
-#define PARAM_WEIGHT_MAX              8  // J
+#define PARAM_WEIGHT_SINCE_LAST_EVENT 7  // H - last weight
+#define PARAM_WEIGHT_MIN              8  // I
+#define PARAM_WEIGHT_MAX              9  // J
 
-// Incubator 07102021
-#define PARAM_TEMP_PCB2       2   // K - temperature of the resistor
-
-#define PARAM_WEIGHT_FACTOR          29  //  - Weight calibration: conversion factor digital -> gr (weight=FACTOR*dig_unit)
-#define PARAM_WEIGHT_OFFSET          30  //  - Weight calibration: digital offset value when bioreactor is empty
+#define PARAM_STEPPER_SPEED        26   // AA - motor speed, in RPM
+#define PARAM_STEPPER_SECONDS      27   // AB   number of seconds before changing direction
+#define PARAM_STEPPER_WAIT         28   // AC   wait time in seconds between change of direction
+#define PARAM_WEIGHT_FACTOR          29  // AD - Weight calibration: conversion factor digital -> gr (weight=FACTOR*dig_unit)
+#define PARAM_WEIGHT_OFFSET          30  // AE - Weight calibration: digital offset value when bioreactor is empty
+#define PARAM_SEDIMENTATION_TIME     31  // AF - Number of minutes to wait without rotation before emptying
+#define PARAM_FILLED_TIME            32  //AG - Number of minutes to stay in the filled state
 
 #define PARAM_CURRENT_STEP           22
 #define PARAM_CURRENT_WAIT_TIME      23
@@ -133,8 +133,6 @@
 #define FIRST_STEP_PARAMETER         52 // BA
 #define LAST_STEP_PARAMETER          67 // BP
 #define NB_STEP_PARAMETERS          LAST_STEP_PARAMETER - FIRST_STEP_PARAMETER + 1
-
-
 
 
 /******************
@@ -154,15 +152,8 @@
 #define FLAG_WEIGHT_RANGE_ERROR         7   // the weight is outside range
 #define MASK_WEIGHT_ERROR               0b10000000  // where are the bit for weight error
 
-// Incubator
-#define PARAM_ERROR2        29              // AD - errors (for temperature of the resistor - Incubator - 07102021)
-#define FLAG_TEMP_PCB_PROBE_ERROR2       0    // pcb probe failed (one wire not answering)
-#define FLAG_TEMP_PCB_RANGE_ERROR2       3  // temperature of pcb is outside range
-#define FLAG_TEMP_TARGET_RANGE_ERROR    6   // target temperature is outside range
-#define MASK_TEMP_ERROR                 0b01001001  // where are the bit for temperature error
-
-#define PARAM_STATUS             25  // Z - currently active service
-#define PARAM_ENABLED            51  // AZ - enabled service (set by user)
+#define PARAM_ENABLED            25  // Z - enabled service (set by user)
+#define PARAM_STATUS             51  // AZ - currently active service
 
 // the following flags are defined for PARAM_STATUS and PARAM_ENABLED
 #define FLAG_PID_CONTROL         0   //0 to stop PID
@@ -172,8 +163,18 @@
 #define FLAG_OUTPUT_3            4
 #define FLAG_OUTPUT_4            5
 
-// Incubator 07102021
-#define FLAG_FAN            6
+// PARAM_STATUS
+#define FLAG_FOOD_CONTROL         2
+#define FLAG_PH_CONTROL           3
+#define FLAG_GAS_CONTROL          4
+#define FLAG_SEDIMENTATION        5
+#define FLAG_RELAY_FILLING        6
+#define FLAG_RELAY_EMPTYING       7
+#define FLAG_PH_CALIBRATE         8
+#define FLAG_RELAY_ACID           9
+#define FLAG_RELAY_BASE           10
+#define FLAG_WAITING_TIME_HOURS   11
+
 
 // value that should not be taken into account
 // in case of error the parameter is set to this value

@@ -8,8 +8,6 @@
 #include "BioOneWire.h"
 #include "Weight.h"
 
-#ifdef FLASH_SELECT
-
 #if FLASH_SELECT == 10 //Flash SS_SPI
 SST sst = SST('B', 6); //D10 is PORT B - 6
 #endif
@@ -18,8 +16,6 @@ SST sst2 = SST('D', 3); //TX is PORT D - 3
 #endif
 #if FLASH_SELECT == A3 //Flash SS_SPI
 SST sst = SST('F', 4); // A3 is PORT F - 4
-#endif
-
 #endif
 
 void printGeneralParameters( Print* output ) {
@@ -53,14 +49,14 @@ void processSpecificCommand( char* data, char* paramValue, Print* output ) {
     case 't':
       output->print(F("Status: "));
       output->println(getParameter(PARAM_STATUS),BIN);
-      for (byte i = 0; i < 6; i++) {
+      for (byte i = 0; i < 11; i++) {
         output->print(i);
         output->print(": ");
         output->println(getParameterBit(PARAM_STATUS, i));
       }
       output->print(F("Enabled: "));
       output->println(getParameter(PARAM_ENABLED),BIN);
-      for (byte i = 0; i <= 6; i++) { // For incubator resistor param
+      for (byte i = 0; i < 6; i++) {
         output->print(i);
         output->print(": ");
         output->println(getParameterBit(PARAM_ENABLED, i));

@@ -9,7 +9,6 @@ void resetParameters() {
   setAndSaveParameter(PARAM_TEMP_EXT1, ERROR_VALUE);
   setAndSaveParameter(PARAM_TEMP_EXT2, ERROR_VALUE);
   setAndSaveParameter(PARAM_TEMP_PCB, ERROR_VALUE);
-  setAndSaveParameter(PARAM_TEMP_PCB2, ERROR_VALUE);  //   Incubator resistor temp - 07102021
   setAndSaveParameter(PARAM_TEMP_TARGET, 3000);
 
   setAndSaveParameter(PARAM_WEIGHT_MIN, 32767);
@@ -17,16 +16,17 @@ void resetParameters() {
   setAndSaveParameter(PARAM_WEIGHT_FACTOR, 0);
   setAndSaveParameter(PARAM_WEIGHT_OFFSET, 0);
 
-  setAndSaveParameter(PARAM_CURRENT_STEP, 0);
+  setAndSaveParameter(PARAM_CURRENT_STEP, 20);
   setAndSaveParameter(PARAM_CURRENT_WAIT_TIME, 0);
   for (uint8_t i = FIRST_STEP_PARAMETER; i <= LAST_STEP_PARAMETER; i++) {
     setAndSaveParameter(i, 0);
   }
 
-  int active = 1 << FLAG_STEPPER_CONTROL | 1 << FLAG_PID_CONTROL | 1 << FLAG_OUTPUT_1 | 1 << FLAG_OUTPUT_2 | 1 << FLAG_OUTPUT_3 | 1 << FLAG_OUTPUT_4 | 1 << FLAG_FAN;  // Incubator Fan - 07102021
+  int active = 1 << FLAG_PID_CONTROL | 1 << FLAG_STEPPER_CONTROL | 1 << FLAG_FOOD_CONTROL | 1 << FLAG_PH_CONTROL | 1 << FLAG_GAS_CONTROL | 1 << FLAG_SEDIMENTATION | 1 << FLAG_RELAY_FILLING | 1 << FLAG_RELAY_EMPTYING | 1 << FLAG_PH_CALIBRATE | 1 << FLAG_RELAY_ACID | 1 << FLAG_RELAY_BASE;
+
+  int enable = 1 << FLAG_PID_CONTROL | 1 << FLAG_STEPPER_CONTROL | 1 << FLAG_OUTPUT_1 | 1 << FLAG_OUTPUT_2 | 1 << FLAG_OUTPUT_3 | 1 << FLAG_OUTPUT_4;
 
   setAndSaveParameter(PARAM_STATUS, active);
-  setAndSaveParameter(PARAM_ENABLED, active);
+  setAndSaveParameter(PARAM_ENABLED, enable);
   setAndSaveParameter(PARAM_ERROR, 0);
-  setAndSaveParameter(PARAM_ERROR2, 0);   // Incubator param temp error - 07102021
 }
