@@ -67,13 +67,13 @@ THD_FUNCTION(ThreadSteps, arg) {
       //switch (parameter) {
       switch (index) {
         case 0: // Do nothing
-          setParameter(PARAM_ENABLED, 0b000000);
-          setParameter(PARAM_STATUS, 0b000000000000);
+          setParameter(PARAM_ENABLED, 0b00);
+          setParameter(PARAM_STATUS, 0b000);
           //index++;
           index = 20;
           break;
         case 1: // Wait in minutes
-          setParameter(PARAM_ENABLED, 0b111111);
+          setParameter(PARAM_ENABLED, 0b11);
           previousMinute = getMinute();
           index++;
         case 2: // Wait in hours
@@ -100,51 +100,21 @@ THD_FUNCTION(ThreadSteps, arg) {
             }
           }
           break;
-        case 3: // Wait for weight reduction to yy grams
+        case 3: // Start heating
           //setParameter(PARAM_STATUS, 0b00010000111);
-          setStatus = 0b0000000000000000;
-          setStatus ^= ( (1 << FLAG_FOOD_CONTROL) | (1 << FLAG_RELAY_EMPTYING) );
+          setStatus = 0b000;
+          setStatus ^= ( (1 << FLAG_PID_CONTROL) | (1 << FLAG_FAN) );
           setParameter(PARAM_STATUS, setStatus );
-          if (getParameter(PARAM_WEIGHT) >= getParameter(PARAM_WEIGHT_OFFSET)) {  // Completely empty
-            setStatus ^= (1 << FLAG_RELAY_EMPTYING);
-            setParameter(PARAM_STATUS, setStatus );
-            index++;
-          }
+          index++;
           break;
-        case 4: // Wait for weight increase to yy grams
-          setStatus = 0b0000000000000000;
-          setStatus ^= ( (1 << FLAG_PID_CONTROL) | (1 << FLAG_STEPPER_CONTROL) | (1 << FLAG_FOOD_CONTROL) | (1 << FLAG_RELAY_FILLING) );
-          setParameter(PARAM_STATUS, setStatus );
-          if (getParameter(PARAM_WEIGHT) <= getParameter(PARAM_WEIGHT_MAX)) {
-            setStatus ^= (1 << FLAG_RELAY_FILLING);
-            setParameter(PARAM_STATUS, setStatus );
-            index++;
-          }
-          break;
-        case 5: // Wait for temperature change (continue if < 0.5°C)
-          if (abs( ( getParameter(PARAM_TEMP_EXT1) + getParameter(PARAM_TEMP_EXT2) ) / 2 - getParameter(PARAM_TEMP_TARGET)) < 50) {
+        case 4: // Wait for temperature change (continue if < 0.5°C)
+          if (abs( ( getParameter(PARAM_TEMP_EXT1) + getParameter(PARAM_TEMP_EXT2) + getParameter(PARAM_TEMP_EXT3)) / 3 - getParameter(PARAM_TEMP_TARGET)) < 50) {
             previousMinute = getMinute();
             index++;
           }
           break;
-        // Filled
-        case 6:
-          if (currentMinute != previousMinute) {
-            filledTime--;
-            previousMinute = currentMinute;
-            setParameter(PARAM_FILLED_TIME, filledTime);
-          }
-          if (filledTime <= 0) {
-            setStatus = 0b0000000000000000;
-            setStatus &= ~(1 << FLAG_STEPPER_CONTROL);
-            setStatus |= (1 << FLAG_PID_CONTROL);
-            setParameter(PARAM_STATUS, setStatus );
-            previousMinute = getMinute();
-            index++;
-          }
-          break;
-        // Sedimentation
-        case 7:
+        // Final Temperature
+        case 5:
           if (currentMinute != previousMinute) {
             sedimentationTime--;
             previousMinute = currentMinute;
@@ -154,24 +124,11 @@ THD_FUNCTION(ThreadSteps, arg) {
             index++;
           }
           break;
-        // Empty
-        case 8:
-          setStatus = 0b0000000000000000;
-          setStatus &= ~(1 << FLAG_PID_CONTROL) &  ~(1 << FLAG_STEPPER_CONTROL);
-          setStatus |= (1 << FLAG_FOOD_CONTROL) | (1 << FLAG_RELAY_EMPTYING);
-          setParameter(PARAM_STATUS, setStatus);
-          if (getParameter(PARAM_WEIGHT) <= getParameter(PARAM_WEIGHT_MIN)) { // No completely empty
-            setStatus ^= (1 << FLAG_RELAY_EMPTYING);
-            setParameter(PARAM_STATUS, setStatus );
-            index = 0;
-          }
-          break;
         case 20:  // Do nothing
         break;
         default:
           index = 20;
       }
-    //}
     setParameter(PARAM_CURRENT_STEP, index);
     chThdSleep(1000);
   }

@@ -136,7 +136,7 @@
 #define FLAG_FAN                 1
 
 // PARAM_STATUS
-
+#define FLAG_WAITING_TIME_HOURS  2
 
 // value that should not be taken into account
 // in case of error the parameter is set to this value
