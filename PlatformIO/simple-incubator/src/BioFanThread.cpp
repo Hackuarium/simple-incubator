@@ -8,13 +8,14 @@
 /*Temperature PID Control addressing relay*/
 
 void setFan() {
-  int temperature = getParameter(PARAM_TEMP_PCB);
+  /*int temperature = getParameter(PARAM_TEMP_PCB);
   if (temperature > TEMP_FAN_ON) {
     analogWrite(OUT_FAN, 255);
   } else {
     analogWrite(OUT_FAN, 0);
   }
-
+  */
+  analogWrite(OUT_FAN, 255);
 }
 
 THD_FUNCTION(ThreadFan, arg)

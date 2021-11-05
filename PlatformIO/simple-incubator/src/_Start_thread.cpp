@@ -14,10 +14,6 @@ there are not too many activities on the microcontroler
   #include "BioMonitoringThread.h"
 #endif
 
-#ifdef THR_SST_LOGGER
-  #include "BioSSTThread.h"
-#endif
-
 #ifdef THR_SERIAL
   #include "BioSerialThread.h"
 #endif
@@ -38,20 +34,8 @@ there are not too many activities on the microcontroler
   #include "BioPIDThread.h"
 #endif
 
-#ifdef THR_STEPPER
-  #include "BioStepperThread.h"
-#endif
-
 #ifdef THR_STEPS
   #include "BioStepsThread.h"
-#endif
-
-#ifdef THR_WEIGHT
-  #include "BioWeightThread.h"
-#endif
-
-#ifdef THR_OUTPUTS
-  #include "BioOutputsThread.h"
 #endif
 
 /*******************************************************************************
@@ -62,18 +46,6 @@ THD_TABLE_BEGIN
 
 // logger should have priority to prevent any corruption of flash memory
 
-#ifdef THR_SST_LOGGER
-  THD_TABLE_ENTRY(waThreadLogger, NULL, ThreadLogger, NULL)
-#endif
-
-#ifdef THR_STEPPER
-THD_TABLE_ENTRY(waThreadStepper, NULL, ThreadStepper, NULL)
-#endif
-
-#ifdef THR_WEIGHT
-THD_TABLE_ENTRY(waThreadWeight, NULL, ThreadWeight, NULL)
-#endif
-
 #ifdef THR_ONEWIRE
   THD_TABLE_ENTRY(waThreadOneWire, NULL, ThreadOneWire, NULL)
   #ifdef THR_PID
@@ -82,10 +54,6 @@ THD_TABLE_ENTRY(waThreadWeight, NULL, ThreadWeight, NULL)
   #ifdef THR_FAN
   THD_TABLE_ENTRY(waThreadFan, NULL, ThreadFan, NULL)
   #endif         
-#endif
-
-#ifdef THR_OUTPUTS
-THD_TABLE_ENTRY(waThreadOutputs, NULL, ThreadOutputs, NULL)
 #endif
 
 #ifdef THR_STEPS
