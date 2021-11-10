@@ -33,20 +33,25 @@ void pid_ctrl() {
   saveAndLogError(getParameter(PARAM_TEMP_TARGET) < SAFETY_MIN_LIQ_TEMP || getParameter(PARAM_TEMP_TARGET) > SAFETY_MAX_LIQ_TEMP, FLAG_TEMP_TARGET_RANGE_ERROR);
 
   if (! isRunning(FLAG_PID_CONTROL) || ! isEnabled(FLAG_PID_CONTROL)) { // PID is disabled
-    analogWrite(PID_CONTROL, 0);
+    //analogWrite(PID_CONTROL, 0);
+    digitalWrite(PID_CONTROL, LOW);
     return;
   }
 
   if (isError()) { // any error we should stop heating !
-    analogWrite(PID_CONTROL, 0);
+    //analogWrite(PID_CONTROL, 0);
+    digitalWrite(PID_CONTROL, LOW);
     return;
   }
 
   heatingRegInput =max( getParameter(PARAM_TEMP_EXT1), getParameter(PARAM_TEMP_EXT2));
   heatingRegSetpoint = getParameter(PARAM_TEMP_TARGET);
   heatingRegPID.Compute();                                   // the computation takes only 30ms!
-  setParameter(PARAM_TEMP_PID, heatingRegOutput);
-  analogWrite(PID_CONTROL, heatingRegOutput);
+  setParameter(PARAM_PID, heatingRegOutput);
+  if(heatingRegOutput >= 50) {
+    digitalWrite(PID_CONTROL, HIGH);
+  }
+  //analogWrite(PID_CONTROL, heatingRegOutput);
 }
 
 // see the rest of oliver's code for sanity checks

@@ -1,24 +1,31 @@
-#define THR_LCD 1
+#include <Arduino.h>
+#include <ChNil.h>
+#include "BioParams.h"
+#include "BioFunc.h"
+#include "Params.h"
+#include "BioHack.h"
+
 
 #ifdef THR_LCD
 
 #include <LiquidCrystal.h>
-#include "libino/RotaryEncoder/Rotary.cpp"
+#include "libraries/RotaryEncoder/Rotary.h"
+#include <PinChangeInterrupt.h>
 
-#define LCD_E      12
-#define LCD_RS     A6
-#define LCD_D4     8
-#define LCD_D5     9
-#define LCD_D6     10
-#define LCD_D7     5
-#define LCD_BL     13    // back light
+#define LCD_E      A1
+#define LCD_RS     A0
+#define LCD_D4     A2
+#define LCD_D5     2
+#define LCD_D6     3
+#define LCD_D7     4
+#define LCD_BL     A3    // back light
 
 
 #define LCD_NB_ROWS     2
 #define LCD_NB_COLUMNS  16
 
-#define ROT_A      0
-#define ROT_B      1
+#define ROT_A      6
+#define ROT_B      5
 #define ROT_PUSH   7
 
 LiquidCrystal lcd(LCD_RS, LCD_E, LCD_D4, LCD_D5, LCD_D6, LCD_D7);
@@ -33,68 +40,10 @@ long lastRotaryEvent = millis();
 // outputs to pins 2 and 3.
 Rotary rotary = Rotary(ROT_A, ROT_B);
 
-NIL_WORKING_AREA(waThreadLcd, 250);
-NIL_THREAD(ThreadLcd, arg) {
-  // initialize the library with the numbers of the interface pins
-
-  setupRotary();
-  pinMode(LCD_BL, OUTPUT);
-  digitalWrite(LCD_BL, HIGH); // backlight
-  nilThdSleepMilliseconds(10);
-  lcd.begin(LCD_NB_COLUMNS, LCD_NB_ROWS);
-
-  setParameter(PARAM_MENU, 0);
-
-  while (true) {
-    lcdMenu();
-    nilThdSleepMilliseconds(40);
-  }
-}
-
-
 byte noEventCounter = 0;
 byte previousMenu = 0;
 
-void lcdMenu() {
-  byte currentMenu = getParameter(PARAM_MENU);
-  if (previousMenu != currentMenu) { // this is used to clear screen from external process for example
-    noEventCounter = 0;
-    previousMenu = currentMenu;
-  }
-  if (rotaryCounter == 0 && ! rotaryPressed) {
-    if (noEventCounter < 32760) noEventCounter++;
-  } else {
-    noEventCounter = 0;
-  }
-  if (noEventCounter > 250 && getParameter(PARAM_STATUS) == 0) {
-    if (currentMenu - currentMenu % 10 != 20) currentMenu = 20;
-    captureCounter = false;
-  }
-  boolean doAction = rotaryPressed;
-  rotaryPressed = false;
-  int counter = rotaryCounter;
-  rotaryCounter = 0;
-
-  switch (currentMenu < 100 ? currentMenu - currentMenu % 10 : currentMenu - currentMenu % 100) {
-    case 0:
-      lcdMenuHome(counter, doAction);
-      break;
-    case 10:
-      lcdMenuSettings(counter, doAction);
-      break;
-    case 20:
-      lcdStatus(counter, doAction);
-      break;
-    case 40:
-      lcdUtilities(counter, doAction);
-      break;
-    case 100:
-      lcdResults(counter, doAction);
-      break;
-  }
-}
-
-
+/*
 void lcdResults(int counter, boolean doAction) {
   if (doAction) setParameter(PARAM_MENU, 0);
   if (noEventCounter < 2) lcd.clear();
@@ -121,6 +70,28 @@ void lcdResults(int counter, boolean doAction) {
       lcd.print(getParameterFromLog(i, PARAM_HBRIDGE_PID));
     }
     lcdPrintBlank(6);
+  }
+}
+*/
+
+void updateCurrentMenu(int counter, byte maxValue, byte modulo) {
+  byte currentMenu = getParameter(PARAM_MENU);
+  if (captureCounter) return;
+  if (counter < 0) {
+    setParameter(PARAM_MENU, currentMenu + max(counter, - currentMenu % modulo));
+  } else if (counter > 0) {
+    setParameter(PARAM_MENU, currentMenu + min(counter, maxValue - currentMenu % modulo));
+  }
+}
+
+void updateCurrentMenu(int counter, byte maxValue) {
+  updateCurrentMenu(counter, maxValue, 10);
+}
+
+
+void lcdPrintBlank(byte number) {
+  for (byte i = 0; i < number; i++) {
+    lcd.print(" ");
   }
 }
 
@@ -168,20 +139,6 @@ void lcdNumberLine(byte line) {
     lcd.print(".*");
   } else {
     lcd.print(". ");
-  }
-}
-
-void updateCurrentMenu(int counter, byte maxValue) {
-  updateCurrentMenu(counter, maxValue, 10);
-}
-
-void updateCurrentMenu(int counter, byte maxValue, byte modulo) {
-  byte currentMenu = getParameter(PARAM_MENU);
-  if (captureCounter) return;
-  if (counter < 0) {
-    setParameter(PARAM_MENU, currentMenu + max(counter, - currentMenu % modulo));
-  } else if (counter > 0) {
-    setParameter(PARAM_MENU, currentMenu + min(counter, maxValue - currentMenu % modulo));
   }
 }
 
@@ -441,20 +398,6 @@ void lcdMenuSettings(int counter, boolean doAction) {
 /*
   UTIILITIES FUNCTIONS
 */
-
-void lcdPrintBlank(byte number) {
-  for (byte i = 0; i < number; i++) {
-    lcd.print(" ");
-  }
-}
-
-void setupRotary() {
-  attachInterrupt(digitalPinToInterrupt(ROT_A), rotate, CHANGE);
-  attachInterrupt(digitalPinToInterrupt(ROT_B), rotate, CHANGE);
-  pinMode(ROT_PUSH, INPUT_PULLUP);
-  attachInterrupt(digitalPinToInterrupt(ROT_PUSH), eventRotaryPressed, CHANGE);
-}
-
 byte accelerationMode = 0;
 int lastIncrement = 0;
 
@@ -502,8 +445,8 @@ void rotate() {
   }
 }
 
-
 void eventRotaryPressed() {
+  Serial.println(F("Press"));
   cli();
   byte state = digitalRead(ROT_PUSH);
   long unsigned eventMillis = millis();
@@ -522,7 +465,69 @@ void eventRotaryPressed() {
   sei();
 }
 
+void setupRotary() {
+  attachPCINT(digitalPinToPCINT(ROT_A), rotate, CHANGE);
+  attachPCINT(digitalPinToPCINT(ROT_B), rotate, CHANGE);
+  pinMode(ROT_PUSH, INPUT_PULLUP);
+  attachPCINT(digitalPinToPCINT(ROT_PUSH), eventRotaryPressed, CHANGE);
+}
 
 
+void lcdMenu() {
+  byte currentMenu = getParameter(PARAM_MENU);
+  if (previousMenu != currentMenu) { // this is used to clear screen from external process for example
+    noEventCounter = 0;
+    previousMenu = currentMenu;
+  }
+  if (rotaryCounter == 0 && ! rotaryPressed) {
+    if (noEventCounter < 32760) noEventCounter++;
+  } else {
+    noEventCounter = 0;
+  }
+  if (noEventCounter > 250 && getParameter(PARAM_STATUS) == 0) {
+    if (currentMenu - currentMenu % 10 != 20) currentMenu = 20;
+    captureCounter = false;
+  }
+  boolean doAction = rotaryPressed;
+  rotaryPressed = false;
+  int counter = rotaryCounter;
+  rotaryCounter = 0;
+
+  switch (currentMenu < 100 ? currentMenu - currentMenu % 10 : currentMenu - currentMenu % 100) {
+    case 0:
+      lcdMenuHome(counter, doAction);
+      break;
+    case 10:
+      lcdMenuSettings(counter, doAction);
+      break;
+    case 20:
+      lcdStatus(counter, doAction);
+      break;
+    case 40:
+      lcdUtilities(counter, doAction);
+      break;
+    case 100:
+      //lcdResults(counter, doAction);
+      break;
+  }
+}
+
+THD_FUNCTION(ThreadLcd, arg) {
+  // initialize the library with the numbers of the interface pins
+
+  setupRotary();
+  pinMode(LCD_BL, OUTPUT);
+  digitalWrite(LCD_BL, HIGH); // backlight
+  chThdSleep(10);
+  lcd.begin(LCD_NB_COLUMNS, LCD_NB_ROWS);
+  lcd.begin(LCD_NB_COLUMNS, LCD_NB_ROWS);
+
+  setParameter(PARAM_MENU, 0);
+
+  while (true) {
+    lcdMenu();
+    chThdSleep(40);
+  }
+}
 
 #endif

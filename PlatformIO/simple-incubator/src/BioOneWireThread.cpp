@@ -38,9 +38,10 @@ THD_FUNCTION(ThreadOneWire, arg) {
     getTemperature(oneWire3T, PARAM_TEMP_EXT3, FLAG_TEMP_EXT3_PROBE_ERROR);
 #endif
 
-#ifdef TEMP_PCB
+#ifdef TEMP_EXT2
     getTemperature(oneWire4T, PARAM_TEMP_PCB, FLAG_TEMP_PCB_PROBE_ERROR);
 #endif
+
     chThdSleep(200);
   }
 }

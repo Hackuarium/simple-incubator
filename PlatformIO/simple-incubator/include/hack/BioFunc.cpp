@@ -2,23 +2,33 @@
 #include "Params.h"
 
 void resetParameters() {
-  setAndSaveParameter(PARAM_TEMP_EXT1, ERROR_VALUE);
-  setAndSaveParameter(PARAM_TEMP_EXT2, ERROR_VALUE);
-  setAndSaveParameter(PARAM_TEMP_EXT3, ERROR_VALUE);
-  setAndSaveParameter(PARAM_TEMP_PCB, ERROR_VALUE);
-  setAndSaveParameter(PARAM_TEMP_TARGET, 3000);
+  setAndSaveParameter(PARAM_TEMP_TARGET, 3000); // 2000
+  setAndSaveParameter(PARAM_TEMP_TARGET_1, 3000); // 2000
+  setAndSaveParameter(PARAM_TIME_1, 2000);
+  setAndSaveParameter(PARAM_TEMP_TARGET_2, 3000); // 2000
+  setAndSaveParameter(PARAM_TIME_2, 2000);
+  setAndSaveParameter(PARAM_TEMP_TARGET_3, 3000); // 2000
+  setAndSaveParameter(PARAM_TIME_3, 2000);
 
-  setAndSaveParameter(PARAM_CURRENT_STEP, 20);
-  setAndSaveParameter(PARAM_CURRENT_WAIT_TIME, 0);
-  for (uint8_t i = FIRST_STEP_PARAMETER; i <= LAST_STEP_PARAMETER; i++) {
-    setAndSaveParameter(i, 0);
-  }
-
-  int active = 1 << FLAG_PID_CONTROL | 1 << FLAG_FAN; // Not set Waiting_hours flag
-
-  int enable = 1 << FLAG_PID_CONTROL | 1 << FLAG_FAN;
-
-  setAndSaveParameter(PARAM_STATUS, active);
-  setAndSaveParameter(PARAM_ENABLED, enable);
+  setAndSaveParameter(PARAM_STATE, 0);
+  setAndSaveParameter(PARAM_FLAGS, 0);
+  setAndSaveParameter(PARAM_MENU, 0);
   setAndSaveParameter(PARAM_ERROR, 0);
+  setAndSaveParameter(PARAM_STATUS, 1);
+  setAndSaveParameter(PARAM_ENABLED, 0);
+
+#ifdef THR_EEPROM_LOGGER
+  formatLog();
+#endif
+
+
+  //setQualifier(21313);
+}
+
+void checkParameters()
+{
+  if (getParameter(PARAM_STATE) < 0)
+  {
+    resetParameters();
+  }
 }

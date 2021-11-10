@@ -20,16 +20,11 @@
 
 // #define THR_WIRE_MASTER 1
 //#define THR_SST_LOGGER  1
-#define THR_SERIAL      1
-#define THR_ONEWIRE     1
-#define THR_PID         1
-#define THR_FAN         1
-#define THR_ERROR       1
+
+
+//#define THR_ERROR       1
 //#define THR_STEPPER     1
-#define THR_STEPS       1
-//#define THR_WEIGHT      1
-//#define THR_OUTPUTS     1
-#define THR_MONITORING  1
+//#define THR_STEPS       1
 
 
 
@@ -46,10 +41,6 @@
 #define EVENT_ERROR_FAILED              6
 #define EVENT_ERROR_RECOVER             7
 
-#define EVENT_MOTOR_START            20
-#define EVENT_MOTOR_STOP             21
-
-
 #define EVENT_ERROR_NOT_FOUND_ENTRY_N  150
 
 #define EVENT_SAVE_ALL_PARAMETER     255
@@ -57,25 +48,6 @@
 //When parameters are set (and saved) an event is recorded (256-281 : A-Z + .... (if more parameters than 262 ...)
 #define EVENT_PARAMETER_SET          256
 
-// MONITORING Thread
-#define MONITORING_LED  5
-
-
-// FAN Thread
-#define OUT_FAN            6
-#define TEMP_FAN_ON        3500
-
-// ERROR Thread
-#define OUT_ERROR          4
-
-// ONE WIRE Thread
-#define TEMP_PCB           A3
-#define TEMP_EXT1          A2
-#define TEMP_EXT2          A1
-#define TEMP_EXT3          A0
-
-// PID Thread
-#define PID_CONTROL        7
 
 // EEPROM || SST Thread
 #define EVENT_LOGGING  1
@@ -87,55 +59,21 @@
 #define MAX_PARAM         68
 
 #ifdef THR_SST_LOGGER
+  #define FLASH_SELECT      1 //Flash SS_SPI
   #define LOG_INTERVAL      10  //Interval in (s) between logs logger
   #define EVENT_LOGGING  1
 #endif
 
 
 
-#define PARAM_TEMP_EXT1      0   // A - temperature of the incubator
-#define PARAM_TEMP_EXT2      1   // B - temperature of the incubator
-#define PARAM_TEMP_EXT3      2   // B - temperature of the incubator
 
-#define PARAM_TEMP_PCB       3   // C - temperature near to MOSFET
-#define PARAM_TEMP_PID       4   // D - heating amount of energy
-#define PARAM_TEMP_TARGET    5   // E - target temperature of the incubator
-
-#define PARAM_SEDIMENTATION_TIME     31  // AF - Number of minutes to wait without rotation before emptying
-#define PARAM_FILLED_TIME            32  //AG - Number of minutes to stay in the filled state
-
-#define PARAM_CURRENT_STEP           22
-#define PARAM_CURRENT_WAIT_TIME      23
 // 36-51 is used by the 16 allowed step
 #define FIRST_STEP_PARAMETER         52 // BA
 #define LAST_STEP_PARAMETER          67 // BP
 #define NB_STEP_PARAMETERS          LAST_STEP_PARAMETER - FIRST_STEP_PARAMETER + 1
 
 
-/******************
-   FLAG DEFINITION
- ******************/
-#define PARAM_ERROR        24              // Y - errors
-//extern const int PARAM_ERROR;
-#define FLAG_TEMP_PCB_PROBE_ERROR       0    // pcb probe failed (one wire not answering)
-#define FLAG_TEMP_EXT1_PROBE_ERROR      1   // external temperature 1 probe failed (one wire not answering)
-#define FLAG_TEMP_EXT2_PROBE_ERROR      2   // external temperature 2 probe failed (one wire not answering)
-#define FLAG_TEMP_EXT3_PROBE_ERROR      3   // external temperature 2 probe failed (one wire not answering)
-#define FLAG_TEMP_PCB_RANGE_ERROR       4   // temperature of pcb is outside range
-#define FLAG_TEMP_EXT1_RANGE_ERROR      5   // temperature of liquid is outside range
-#define FLAG_TEMP_EXT2_RANGE_ERROR      6   // temperature of liquid is outside range
-#define FLAG_TEMP_TARGET_RANGE_ERROR    7   // target temperature is outside range
-#define MASK_TEMP_ERROR                 0b011111111  // where are the bit for temperature error
 
-#define PARAM_ENABLED            25  // Z - enabled service (set by user)
-#define PARAM_STATUS             51  // AZ - currently active service
-
-// the following flags are defined for PARAM_STATUS and PARAM_ENABLED
-#define FLAG_PID_CONTROL         0   //0 to stop PID
-#define FLAG_FAN                 1
-
-// PARAM_STATUS
-#define FLAG_WAITING_TIME_HOURS  2
 
 // value that should not be taken into account
 // in case of error the parameter is set to this value
@@ -190,3 +128,108 @@
 
 #define FIRST_ADDRESS   64
 #define LAST_ADDRESS   1023
+
+
+
+
+
+
+
+/*******************************************************************************
+      INCUBATOR POROJECT
+*******************************************************************************/
+#define NOT_IMPLEMENT_1_0 50
+
+//#define THR_EEPROM_LOGGER 1
+//#define THR_LCD         1
+//#define THR_ERROR             1 // define the pin to blink if there is an error
+//#define THR_MONITORING  1
+#define THR_SERIAL      1
+#define THR_FAN         1
+#define THR_ONEWIRE     1
+#define THR_PID         1
+
+// MONITORING Thread
+#define MONITORING_LED     NOT_IMPLEMENT_1_0
+
+// FAN Thread
+#define OUT_FAN            6
+#define TEMP_FAN_ON        1500
+
+// PID Thread
+#define PID_CONTROL        7
+
+// ERROR Thread
+#define OUT_ERROR          NOT_IMPLEMENT_1_0
+
+// ONE WIRE Thread
+#define TEMP_PCB           A3
+#define TEMP_EXT1          A2
+#define TEMP_EXT2          A1
+#define TEMP_EXT3          A0
+
+
+#define PARAM_TEMP_EXT1      0   // A - temperature over to PCB
+#define PARAM_TEMP_EXT2      1   // B - temperature of the solution
+#define PARAM_TEMP_EXT3      2   // C - temperature of the solution
+
+#define PARAM_TEMP_PCB       3   // D - temperature of the PID
+#define PARAM_TEMP_TARGET    4   // E - target temperature of the liquid
+#define PARAM_PID            5   // F - heating amount of energy
+
+/******************
+   FLAG DEFINITION
+ ******************/
+
+#define PARAM_ERROR        23              // X - errors
+//extern const int PARAM_ERROR;
+#define FLAG_TEMP_PCB_PROBE_ERROR       0    // pcb probe failed (one wire not answering)
+#define FLAG_TEMP_EXT1_PROBE_ERROR      1   // external temperature 1 probe failed (one wire not answering)
+#define FLAG_TEMP_EXT2_PROBE_ERROR      2   // external temperature 2 probe failed (one wire not answering)
+#define FLAG_TEMP_EXT3_PROBE_ERROR      3   // external temperature 3 probe failed (one wire not answering)
+#define FLAG_TEMP_PCB_RANGE_ERROR       3   // temperature of pcb is outside range
+#define FLAG_TEMP_EXT1_RANGE_ERROR      4   // temperature of liquid is outside range
+#define FLAG_TEMP_EXT2_RANGE_ERROR      5   // temperature of liquid is outside range
+#define FLAG_TEMP_EXT3_RANGE_ERROR      6   // temperature of liquid is outside range
+#define FLAG_TEMP_TARGET_RANGE_ERROR    7   // target temperature is outside range
+#define MASK_TEMP_ERROR                 0b11111111  // where are the bit for temperature error
+
+#define PARAM_ENABLED            24  // Y - enabled service (set by user)
+#define PARAM_STATUS             25  // Z - currently active service
+
+// the following flags are defined for PARAM_STATUS and PARAM_ENABLED
+#define FLAG_PID_CONTROL         0   //0 to stop PID
+
+// PARAM_STATUS
+
+
+
+
+#define NUMBER_PARAMETERS_TO_LOG 6  // defines the number of parameters to log
+// allowed values: 1, 2, 3, 4, 6, 8, 10, 14
+// 2 first entries in the log will be logID and secodns between
+#define LOG_INTERVAL 900   // we log every 15 minutes
+// we can store 60 entries in the log
+
+
+#define MAX_PARAM       26
+
+
+#define PARAM_TEMP_TARGET_1  10
+#define PARAM_TIME_1         11
+#define PARAM_TEMP_TARGET_2  12
+#define PARAM_TIME_2         13
+#define PARAM_TEMP_TARGET_3  14
+#define PARAM_TIME_3         15
+
+#define PARAM_FLAGS           17
+#define PARAM_FLAG_INVERT_ROTARY 0  // invert rotary direction
+
+#define PARAM_CURRENT_TIME   20
+#define PARAM_STATE          21 // current state
+
+#define STATE_OFF        0
+#define STATE_CONSTANT   1
+#define STATE_PROGRAM    2
+
+#define PARAM_MENU          22 // current menu

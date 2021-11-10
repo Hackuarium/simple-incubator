@@ -60,6 +60,8 @@ void saveParameters() {
   #ifdef EVENT_LOGGING
     #ifdef THR_EEPROM_LOGGER
     writeLog();
+    #else
+    //writeLog(EVENT_SAVE_ALL_PARAMETER, 0);
     #endif
   #endif
 }
