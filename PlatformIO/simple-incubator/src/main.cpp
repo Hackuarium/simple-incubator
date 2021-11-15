@@ -1,7 +1,7 @@
 #include <Arduino.h>
 #include <ChNil.h>
 
-#define SOFTWARE_VERSION "v0.0.1"
+#define SOFTWARE_VERSION "v0.0.2"
 
 // Import constants
 #include <BioParams.h>

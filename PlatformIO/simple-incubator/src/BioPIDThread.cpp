@@ -33,14 +33,12 @@ void pid_ctrl() {
   saveAndLogError(getParameter(PARAM_TEMP_TARGET) < SAFETY_MIN_LIQ_TEMP || getParameter(PARAM_TEMP_TARGET) > SAFETY_MAX_LIQ_TEMP, FLAG_TEMP_TARGET_RANGE_ERROR);
 
   if (! isRunning(FLAG_PID_CONTROL) || ! isEnabled(FLAG_PID_CONTROL)) { // PID is disabled
-    //analogWrite(PID_CONTROL, 0);
     digitalWrite(PID_CONTROL, LOW);
     return;
   }
 
   if (isError()) { // any error we should stop heating !
-    //analogWrite(PID_CONTROL, 0);
-    digitalWrite(PID_CONTROL, LOW);
+    analogWrite(PID_CONTROL, 0);
     return;
   }
 
@@ -49,36 +47,7 @@ void pid_ctrl() {
   heatingRegPID.Compute();                                   // the computation takes only 30ms!
   setParameter(PARAM_PID, heatingRegOutput);
   
-  if (int(heatingRegOutput) >= 80) {
-    digitalWrite(PID_CONTROL, HIGH);
-    chThdSleep(80);
-    digitalWrite(PID_CONTROL, LOW);
-  }
-  else {
-    if (int(heatingRegOutput) >= 60 ) {
-      digitalWrite(PID_CONTROL, HIGH);
-      chThdSleep(60);
-      digitalWrite(PID_CONTROL, LOW);
-    }
-    else {
-      if (int(heatingRegOutput) >= 40 ) {
-        digitalWrite(PID_CONTROL, HIGH);
-        chThdSleep(40);
-        digitalWrite(PID_CONTROL, LOW);
-      }
-      else {
-        if (int(heatingRegOutput) >= 18 ) {
-          digitalWrite(PID_CONTROL, HIGH);
-          chThdSleep(20);
-          digitalWrite(PID_CONTROL, LOW);
-        }
-        else {
-          digitalWrite(PID_CONTROL, LOW);
-        }
-      }
-    }
-  }
-  //analogWrite(PID_CONTROL, heatingRegOutput);
+  analogWrite(PID_CONTROL, heatingRegOutput);
 }
 
 // see the rest of oliver's code for sanity checks

@@ -153,11 +153,11 @@
 #define MONITORING_LED     NOT_IMPLEMENT_1_0
 
 // FAN Thread
-#define OUT_FAN            6
+#define OUT_FAN            5
 #define TEMP_FAN_ON        1500
 
 // PID Thread
-#define PID_CONTROL        7
+#define PID_CONTROL        6
 
 // ERROR Thread
 #define OUT_ERROR          NOT_IMPLEMENT_1_0
