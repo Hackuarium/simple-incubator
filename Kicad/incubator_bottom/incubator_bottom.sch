@@ -439,7 +439,7 @@ MOSI
 Text GLabel 1275 1775 0    50   Input ~ 0
 ~RESET
 Text GLabel 1275 1675 0    50   Input ~ 0
-SCK
+SCK|MONITORING
 Text GLabel 1275 1575 0    50   Input ~ 0
 MISO
 $Comp
@@ -591,11 +591,11 @@ ONE-WIRE-2
 Text GLabel 4750 1325 2    50   Input ~ 0
 ONE-WIRE-1
 Text GLabel 4750 2200 2    50   Input ~ 0
-PID
+D7
 Text GLabel 4750 2100 2    50   Input ~ 0
-FAN
+PID
 Text GLabel 4750 2000 2    50   Input ~ 0
-D5
+FAN
 Text GLabel 4750 1900 2    50   Input ~ 0
 D4
 Text GLabel 4750 1800 2    50   Input ~ 0
@@ -608,11 +608,11 @@ Text GLabel 4750 2850 2    50   Input ~ 0
 SCL
 Text GLabel 4750 2750 2    50   Input ~ 0
 SDA
-Text GLabel 4750 2575 2    50   Input ~ 0
-SCK
-Text GLabel 4750 2475 2    50   Input ~ 0
+Text GLabel 4750 2550 2    50   Input ~ 0
+SCK|MONITORING
+Text GLabel 4750 2450 2    50   Input ~ 0
 MISO
-Text GLabel 4750 2375 2    50   Input ~ 0
+Text GLabel 4750 2350 2    50   Input ~ 0
 MOSI
 Text GLabel 3825 1400 0    50   Input ~ 0
 ~RESET
@@ -638,9 +638,10 @@ F15 "SDA" I R 4675 2750 50
 F16 "SCL" I R 4675 2850 50 
 F17 "~RESET" I L 3900 1400 50 
 F18 "VIN" I L 3900 1300 50 
-F19 "MOSI" I R 4675 2375 50 
-F20 "MISO" I R 4675 2475 50 
-F21 "SCK" I R 4675 2575 50 
+F19 "MOSI" I R 4675 2350 50 
+F20 "MISO" I R 4675 2450 50 
+F21 "SCK" I R 4675 2550 50 
+F22 "ERROR" I R 4675 2650 50 
 $EndSheet
 Wire Wire Line
 	4675 1025 4750 1025
@@ -666,12 +667,6 @@ Wire Wire Line
 	4675 2100 4750 2100
 Wire Wire Line
 	4750 2200 4675 2200
-Wire Wire Line
-	4675 2575 4750 2575
-Wire Wire Line
-	4750 2475 4675 2475
-Wire Wire Line
-	4675 2375 4750 2375
 Text GLabel 3825 1300 0    50   Input ~ 0
 VIN
 Wire Wire Line
@@ -818,43 +813,23 @@ F 3 "~" H 1975 2600 50  0001 C CNN
 	1    1975 2600
 	1    0    0    -1  
 $EndComp
-Text GLabel 2425 2250 2    50   Input ~ 0
+Text GLabel 2525 2250 2    50   Input ~ 0
 ~RESET
 $Comp
 L incubator_bottom-rescue:C-Device C5
 U 1 1 612C10B9
-P 2300 2475
-F 0 "C5" H 2415 2521 50  0000 L CNN
-F 1 "100n" H 2415 2430 50  0000 L CNN
-F 2 "Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder" H 2338 2325 50  0001 C CNN
-F 3 "~" H 2300 2475 50  0001 C CNN
-	1    2300 2475
-	1    0    0    -1  
+P 2275 2250
+F 0 "C5" H 2390 2296 50  0000 L CNN
+F 1 "100n" H 2390 2205 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder" H 2313 2100 50  0001 C CNN
+F 3 "~" H 2275 2250 50  0001 C CNN
+	1    2275 2250
+	0    1    1    0   
 $EndComp
-$Comp
-L incubator_bottom-rescue:GND-power #PWR0126
-U 1 1 612C3665
-P 2300 2700
-F 0 "#PWR0126" H 2300 2450 50  0001 C CNN
-F 1 "GND" H 2305 2527 50  0000 C CNN
-F 2 "" H 2300 2700 50  0001 C CNN
-F 3 "" H 2300 2700 50  0001 C CNN
-	1    2300 2700
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	2300 2700 2300 2625
-Wire Wire Line
-	2425 2250 2300 2250
-Wire Wire Line
-	2300 2250 2300 2325
 Wire Wire Line
 	1775 2400 1700 2400
 Wire Wire Line
 	1700 2400 1700 2250
-Wire Wire Line
-	1700 2250 2300 2250
-Connection ~ 2300 2250
 Text GLabel 4750 1500 2    50   Input ~ 0
 RX
 Text GLabel 1700 2600 0    50   Input ~ 0
@@ -1238,4 +1213,112 @@ Wire Wire Line
 Connection ~ 1250 5850
 Wire Wire Line
 	1250 5850 1250 6000
+Wire Wire Line
+	1700 2250 2125 2250
+Wire Wire Line
+	2425 2250 2525 2250
+$Comp
+L Device:R R?
+U 1 1 61973D5B
+P 1500 6725
+AR Path="/5E0D7B92/61973D5B" Ref="R?"  Part="1" 
+AR Path="/5E0D7D04/61973D5B" Ref="R?"  Part="1" 
+AR Path="/61973D5B" Ref="R14"  Part="1" 
+AR Path="/5E0005EE/61973D5B" Ref="R?"  Part="1" 
+AR Path="/614262A1/61973D5B" Ref="R?"  Part="1" 
+AR Path="/61425B26/61973D5B" Ref="R?"  Part="1" 
+AR Path="/6150A405/61973D5B" Ref="R?"  Part="1" 
+F 0 "R14" V 1425 6725 50  0000 C CNN
+F 1 "10k" V 1500 6725 50  0000 C CNN
+F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder" V 1430 6725 50  0001 C CNN
+F 3 "~" H 1500 6725 50  0001 C CNN
+	1    1500 6725
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:LED D?
+U 1 1 61975EC7
+P 1900 6725
+AR Path="/6150A405/61975EC7" Ref="D?"  Part="1" 
+AR Path="/61975EC7" Ref="D6"  Part="1" 
+F 0 "D6" H 1900 6650 50  0000 C CNN
+F 1 "GREEN" H 1900 6825 50  0000 C CNN
+F 2 "LED_SMD:LED_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 1900 6725 50  0001 C CNN
+F 3 "~" H 1900 6725 50  0001 C CNN
+	1    1900 6725
+	-1   0    0    -1  
+$EndComp
+Text GLabel 1250 6725 0    50   Input ~ 0
+SCK|MONITORING
+Wire Wire Line
+	1250 6725 1350 6725
+Wire Wire Line
+	1650 6725 1750 6725
+$Comp
+L incubator_bottom-rescue:GND-power #PWR0114
+U 1 1 61986C2C
+P 2200 7125
+F 0 "#PWR0114" H 2200 6875 50  0001 C CNN
+F 1 "GND" H 2205 6952 50  0000 C CNN
+F 2 "" H 2200 7125 50  0001 C CNN
+F 3 "" H 2200 7125 50  0001 C CNN
+	1    2200 7125
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R R?
+U 1 1 61994E89
+P 1500 7025
+AR Path="/5E0D7B92/61994E89" Ref="R?"  Part="1" 
+AR Path="/5E0D7D04/61994E89" Ref="R?"  Part="1" 
+AR Path="/61994E89" Ref="R15"  Part="1" 
+AR Path="/5E0005EE/61994E89" Ref="R?"  Part="1" 
+AR Path="/614262A1/61994E89" Ref="R?"  Part="1" 
+AR Path="/61425B26/61994E89" Ref="R?"  Part="1" 
+AR Path="/6150A405/61994E89" Ref="R?"  Part="1" 
+F 0 "R15" V 1425 7025 50  0000 C CNN
+F 1 "10k" V 1500 7025 50  0000 C CNN
+F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder" V 1430 7025 50  0001 C CNN
+F 3 "~" H 1500 7025 50  0001 C CNN
+	1    1500 7025
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:LED D?
+U 1 1 619952CE
+P 1925 7025
+AR Path="/6150A405/619952CE" Ref="D?"  Part="1" 
+AR Path="/619952CE" Ref="D7"  Part="1" 
+F 0 "D7" H 1925 6950 50  0000 C CNN
+F 1 "RED" H 1925 7125 50  0000 C CNN
+F 2 "LED_SMD:LED_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 1925 7025 50  0001 C CNN
+F 3 "~" H 1925 7025 50  0001 C CNN
+	1    1925 7025
+	-1   0    0    -1  
+$EndComp
+Text GLabel 1225 7025 0    50   Input ~ 0
+ERROR
+Text GLabel 4750 2650 2    50   Input ~ 0
+ERROR
+Wire Wire Line
+	4675 2350 4750 2350
+Wire Wire Line
+	4750 2450 4675 2450
+Wire Wire Line
+	4675 2550 4750 2550
+Wire Wire Line
+	4750 2650 4675 2650
+Wire Wire Line
+	1225 7025 1350 7025
+Wire Wire Line
+	1650 7025 1775 7025
+Wire Wire Line
+	2075 7025 2200 7025
+Wire Wire Line
+	2200 7025 2200 7125
+Wire Wire Line
+	2050 6725 2200 6725
+Wire Wire Line
+	2200 6725 2200 7025
+Connection ~ 2200 7025
 $EndSCHEMATC

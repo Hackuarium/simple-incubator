@@ -1005,7 +1005,7 @@ F 3 "~" H 5800 7450 50  0001 C CNN
 $EndComp
 Text Notes 5250 7000 0    50   ~ 0
 FAN HOLES
-Text GLabel 1050 3850 0    50   Input ~ 0
+Text GLabel 1000 3850 0    50   Input ~ 0
 12V
 $Comp
 L incubator_bottom-rescue:GND-power #PWR01
@@ -1021,7 +1021,7 @@ $EndComp
 Wire Wire Line
 	1550 4450 1550 4350
 Wire Wire Line
-	1250 3850 1150 3850
+	1250 3850 1100 3850
 Text GLabel 2500 3850 2    50   Input ~ 0
 VIN
 $Comp
@@ -1100,12 +1100,12 @@ $EndComp
 $Comp
 L incubator_bottom-rescue:C-Device C6
 U 1 1 61544A4B
-P 1150 4100
-F 0 "C6" H 1265 4146 50  0000 L CNN
-F 1 "0.33u" H 1265 4055 50  0000 L CNN
-F 2 "Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder" H 1188 3950 50  0001 C CNN
-F 3 "~" H 1150 4100 50  0001 C CNN
-	1    1150 4100
+P 1100 4100
+F 0 "C6" H 1215 4146 50  0000 L CNN
+F 1 "0.33u" H 1215 4055 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder" H 1138 3950 50  0001 C CNN
+F 3 "~" H 1100 4100 50  0001 C CNN
+	1    1100 4100
 	1    0    0    -1  
 $EndComp
 $Comp
@@ -1125,14 +1125,14 @@ Wire Wire Line
 	2100 3850 1950 3850
 Connection ~ 1950 3850
 Wire Wire Line
-	1150 3950 1150 3850
-Connection ~ 1150 3850
+	1100 3950 1100 3850
+Connection ~ 1100 3850
 Wire Wire Line
-	1150 3850 1050 3850
+	1100 3850 1000 3850
 Wire Wire Line
-	1150 4250 1150 4350
+	1100 4250 1100 4350
 Wire Wire Line
-	1150 4350 1550 4350
+	1100 4350 1550 4350
 Connection ~ 1550 4350
 Wire Wire Line
 	1550 4350 1550 4150

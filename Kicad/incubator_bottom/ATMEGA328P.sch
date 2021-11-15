@@ -165,7 +165,6 @@ NoConn ~ 5575 2625
 NoConn ~ 5575 2425
 NoConn ~ 6775 2425
 NoConn ~ 6775 2525
-NoConn ~ 6775 2625
 NoConn ~ 6775 3025
 NoConn ~ 6775 3125
 Text HLabel 6850 4125 2    50   Input ~ 0
@@ -263,4 +262,8 @@ F 3 "~" H 5150 4125 50  0001 C CNN
 	1    5150 4125
 	0    1    1    0   
 $EndComp
+Text HLabel 6850 2625 2    50   Input ~ 0
+ERROR
+Wire Wire Line
+	6775 2625 6850 2625
 $EndSCHEMATC
