@@ -49,12 +49,36 @@ void pid_ctrl() {
   heatingRegPID.Compute();                                   // the computation takes only 30ms!
   setParameter(PARAM_PID, heatingRegOutput);
   
-  digitalWrite(PID_CONTROL, HIGH);
-  chThdSleep(heatingRegOutput);
-  digitalWrite(PID_CONTROL, LOW);
-  
+  if (int(heatingRegOutput) >= 80) {
+    digitalWrite(PID_CONTROL, HIGH);
+    chThdSleep(80);
+    digitalWrite(PID_CONTROL, LOW);
+  }
+  else {
+    if (int(heatingRegOutput) >= 60 ) {
+      digitalWrite(PID_CONTROL, HIGH);
+      chThdSleep(60);
+      digitalWrite(PID_CONTROL, LOW);
+    }
+    else {
+      if (int(heatingRegOutput) >= 40 ) {
+        digitalWrite(PID_CONTROL, HIGH);
+        chThdSleep(40);
+        digitalWrite(PID_CONTROL, LOW);
+      }
+      else {
+        if (int(heatingRegOutput) >= 18 ) {
+          digitalWrite(PID_CONTROL, HIGH);
+          chThdSleep(20);
+          digitalWrite(PID_CONTROL, LOW);
+        }
+        else {
+          digitalWrite(PID_CONTROL, LOW);
+        }
+      }
+    }
+  }
   //analogWrite(PID_CONTROL, heatingRegOutput);
-
 }
 
 // see the rest of oliver's code for sanity checks
