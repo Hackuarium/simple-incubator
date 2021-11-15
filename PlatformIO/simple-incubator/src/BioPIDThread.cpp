@@ -48,10 +48,13 @@ void pid_ctrl() {
   heatingRegSetpoint = getParameter(PARAM_TEMP_TARGET);
   heatingRegPID.Compute();                                   // the computation takes only 30ms!
   setParameter(PARAM_PID, heatingRegOutput);
-  if(heatingRegOutput >= 50) {
-    digitalWrite(PID_CONTROL, HIGH);
-  }
+  
+  digitalWrite(PID_CONTROL, HIGH);
+  chThdSleep(heatingRegOutput);
+  digitalWrite(PID_CONTROL, LOW);
+  
   //analogWrite(PID_CONTROL, heatingRegOutput);
+
 }
 
 // see the rest of oliver's code for sanity checks
