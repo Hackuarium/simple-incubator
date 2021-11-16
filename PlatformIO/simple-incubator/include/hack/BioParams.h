@@ -142,31 +142,31 @@
 
 //#define THR_EEPROM_LOGGER 1
 //#define THR_LCD         1
-//#define THR_ERROR             1 // define the pin to blink if there is an error
-//#define THR_MONITORING  1
+#define THR_ERROR             1 // define the pin to blink if there is an error
+#define THR_MONITORING  1
 #define THR_SERIAL      1
 #define THR_FAN         1
 #define THR_ONEWIRE     1
 #define THR_PID         1
 
 // MONITORING Thread
-#define MONITORING_LED     NOT_IMPLEMENT_1_0
+#define MONITORING_LED     13 // Define the pin to blink if everything goes well
 
 // FAN Thread
-#define OUT_FAN            5
+#define OUT_FAN            5  // Define the pin for fan
 #define TEMP_FAN_ON        1500
 
 // PID Thread
-#define PID_CONTROL        6
+#define PID_CONTROL        6  // Define the pin for PID control (need to have PWM)
 
 // ERROR Thread
-#define OUT_ERROR          NOT_IMPLEMENT_1_0
+#define OUT_ERROR          10 // Define the pin to blink if there is an error
 
 // ONE WIRE Thread
-#define TEMP_PCB           A3
-#define TEMP_EXT1          A2
-#define TEMP_EXT2          A1
-#define TEMP_EXT3          A0
+#define TEMP_PCB           A3 // Define the pin for One-wire temperature sensor in the PCB
+#define TEMP_EXT1          A2 // Define the pin for One-wire external temperature sensor 1
+#define TEMP_EXT2          A1 // Define the pin for One-wire external temperature sensor 2
+#define TEMP_EXT3          A0 // Define the pin for One-wire external temperature sensor 3
 
 
 #define PARAM_TEMP_EXT1      0   // A - temperature over to PCB
