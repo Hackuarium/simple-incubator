@@ -48,10 +48,9 @@ crw-rw-rw- 1 root root 189, 6 Okt 2 09:45 /dev/bus/usb/001/007
 
 Based on: [ATMEGA328 - Arduino UNO](https://upload.wikimedia.org/wikipedia/commons/c/c9/Pinout_of_ARDUINO_Board_and_ATMega328PU.svg)
 
-| uC Pin | Pin Port | Digital Port | Analog Port | Alternate Functions              | Arduino Functions | Incubator Functions       | Description                                                                                              |
+| µC Pin | Pin Port | Digital Port | Analog Port | Alternate Functions              | Arduino Functions | Incubator Functions       | Description                                                                                              |
 | ------ | -------- | ------------ | ----------- | -------------------------------- | ----------------- | ------------------------- | -------------------------------------------------------------------------------------------------------- |
 | 1      | PC6      |              |             | PCINT14 <br /> /RESET            | /RESET            | /RESET                    | - Low level Reset pin. <br /> - DTS pin for Serial communication. <br /> - SS pin for SPI communication. |
-|        |
 | 2      | PD0      | 0            |             | RXD <br /> PCINT16               | RX                | RX                        | RX pin for Serial communication.                                                                         |
 | 3      | PD1      | 1            |             | TXD <br /> PCINT17               | TX                | TX                        | TX pin for Serial communication.                                                                         |
 | 4      | PD2      | 2            |             | INT0 <br /> PCINT18              |                   |                           |                                                                                                          |
@@ -70,7 +69,6 @@ Based on: [ATMEGA328 - Arduino UNO](https://upload.wikimedia.org/wikipedia/commo
 | 17     | PB3      | 11           |             | OC2A <br /> PCINT3 <br /> MOSI   | PWM <br /> MOSI   | MOSI                      | MOSI pin for SPI communication.                                                                          |
 | 18     | PB4      | 12           |             | PCINT4 <br /> MISO               | PWM <br /> MISO   | MISO                      | MISO pin for SPI communication.                                                                          |
 | 19     | PB5      | 13           |             | PCINT5 <br /> SCK                | SCK <br /> LED    | SCK <br /> MONITORING_LED | - SCK pin for SPI communication. <br /> - Pin for Monitoring LED.                                        |
-|        |
 | 20     | VCC      |              |             |                                  |                   |                           | VCC power supply pin.                                                                                    |
 | 21     | AREF     |              |             |                                  |                   |                           |                                                                                                          |
 | 22     | GND      |              |             |                                  |                   |                           | Ground pin.                                                                                              |
@@ -78,5 +76,5 @@ Based on: [ATMEGA328 - Arduino UNO](https://upload.wikimedia.org/wikipedia/commo
 | 24     | PC1      | 15           | A1          | PCINT9 <br /> ADC1               | TEMP_EXT2         | TEMP_EXT2                 | Pin for One-wire external temperature sensor 2.                                                          |
 | 25     | PC2      | 16           | A2          | PCINT10 <br /> ADC2              | TEMP_EXT1         | TEMP_EXT1                 | Pin for One-wire external temperature sensor 1.                                                          |
 | 26     | PC3      | 17           | A3          | PCINT11 <br /> ADC3              | TEMP_PCB          | TEMP_PCB                  | Pin for One-wire temperature sensor in the PCB.                                                          |
-| 27     | PC4      | 18           | A4          | PCINT12 <br /> ADC4 <br /> SDA   |                   | SDA                       | SDA pin for I2C communication.                                                                           |
-| 28     | PC5      | 19           | A5          | PCINT13 <br /> ADC5 <br /> SCL   |                   | SCL                       | SCL pin for I2C communication.                                                                           |
+| 27     | PC4      | 18           | A4          | PCINT12 <br /> ADC4 <br /> SDA   |                   | SDA                       | SDA pin for I2C communication (Slave I2C).                                                               |
+| 28     | PC5      | 19           | A5          | PCINT13 <br /> ADC5 <br /> SCL   |                   | SCL                       | SCL pin for I2C communication (Slave I2C).                                                               |
