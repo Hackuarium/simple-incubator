@@ -1,44 +1,10 @@
 #include <Arduino.h>
 #include <ChNil.h>
-#include <BioParams.h>
+#include "BioParams.h"
 
-#if defined(I2C)
+#ifdef THR_WIRE_SLAVE
 
-#include "BioI2C.h"
-
-THD_FUNCTION(ThreadWire, arg) {
-
-  chThdSleep(1000);
-
-  uint8_t aByte=0;
-  uint8_t* wireFlag32 = &aByte;
-  unsigned int wireEventStatus = 0;
-  Wire.begin();
-         
-  chThdSleep(10000); //wait for probe warm-up
-
-  while(true) {
-
-    if (wireEventStatus%25==0) {
-      wireUpdateList();
-    }
-    wireEventStatus++;
-
-    /*********
-     *  pH
-     *********/    
-
-    #ifdef GAS_CTRL
-      getAnemometer(gas_wire_write);
-    #endif
-
-  
-    #ifdef MODE_CALIBRATE //update faster in calibration mode
-    chThdSleep(100); 
-    #else
-    chThdSleep(500); 
-    #endif
-  }
-}
+THD_WORKING_AREA(waThreadWire, 88); //min of 64 when pH present
+THD_FUNCTION(ThreadWire, arg);
 
 #endif

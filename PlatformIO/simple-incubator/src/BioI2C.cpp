@@ -1,134 +1,74 @@
+// setting ATmega328 as I2C slave.
 #include <Arduino.h>
 #include <ChNil.h>
-#include <BioParams.h>
-
-#if defined(I2C)
-
 #include <Wire.h>
-/*
- FLUX
- - B1011 XXX R/W  (XXX is the user defined address and R/W the read/write byte) --> TBD
- PH METER
- - B????????
- */
 
-#define WIRE_MAX_DEVICES 5
-uint8_t numberI2CDevices = 0;
-uint8_t wireDeviceID[WIRE_MAX_DEVICES];
+#include "BioParams.h"
+#include "Params.h"
 
-/********************
- * Utilities functions 
- **********************/
+// setting ATmega32U4 as I2C slave.
+#ifdef THR_WIRE_SLAVE
 
-void wireWrite(uint8_t address, uint8_t _data ) {
-  Wire.beginTransmission(address);
-  Wire.write(_data);
-  Wire.endTransmission();
-}
+uint8_t command = 0x00;
 
-void wireWrite(uint8_t address, uint8_t reg, uint8_t _data ) // used by 4-relay
-{
-  Wire.beginTransmission(address);
-  Wire.write(reg);
-  Wire.write(_data);
-  Wire.endTransmission();
-}
-
-uint8_t wireRead(uint8_t address) {
-  uint8_t _data = 0;
-  Wire.requestFrom(address, (uint8_t)1);
-  if(Wire.available()) {
-    _data = Wire.read();
-  }
-  return _data;
-}
-
-void wireInfo(Print* output) {
-  //wireUpdateList();
-  output->println("I2C");
-
-  for (uint8_t i=0; i<numberI2CDevices; i++) {
-    output->print(i);
-    output->print(": ");
-    output->print(wireDeviceID[i]);
-    output->print(" - ");
-    output->println(wireDeviceID[i],BIN);
+void requestEvent() {
+  if (command < MAX_PARAM) {
+    int value = getParameter(command);
+    Serial.println(value);         // print the integer
+    Wire.write(value >> 8 & 255);
+    Wire.write(value >> 0 & 255);
+  } else {
+    int value = 0;
+#ifdef WIRE_SLAVE_COMMAND
+    value = wireSlaveCommand(command, ERROR_VALUE);
+#endif
+    Serial.println(value);         // print the integer
+    Wire.write(value >> 8 & 255);
+    Wire.write(value >> 0 & 255);
   }
 }
 
-void wireInsertDevice(uint8_t id, uint8_t newDevice) {
-  //Serial.println(id);
+void receiveEvent( int howMany ) {
+  (void)howMany;
 
-  if (numberI2CDevices<WIRE_MAX_DEVICES) {
-    for (uint8_t i = id + 1; i < numberI2CDevices - 1; i++) {
-      wireDeviceID[i]=wireDeviceID[i + 1];
+  while (1 < Wire.available()) { // loop through all but the last
+    uint8_t c = Wire.read(); // receive byte as a character
+    Serial.print(c);         // print the character
+  }
+  uint8_t x = Wire.read();    // receive byte as an integer
+  Serial.println(F("Received"));
+  Serial.println(x);         // print the integer
+
+  /*
+  if (Wire.available()) {
+    command = Wire.read(); // receive byte as a character
+  }
+
+  if (Wire.available()) { // we need to set the value of a register
+    int value = 0;
+    while (Wire.available()) { // loop through all but the last
+      value <<= 8;
+      value |= Wire.read();
     }
-    wireDeviceID[id]=newDevice;
-    numberI2CDevices++;
-  } 
-}
-
-void wireRemoveDevice(uint8_t id) {
-  for (uint8_t i=id; i<numberI2CDevices-1; i++) {
-    wireDeviceID[i]=wireDeviceID[i+1];
-  }
-  numberI2CDevices--;
-}
-
-void wireUpdateList() {
-  // 16ms
-  uint8_t _data;
-  uint8_t currentPosition = 0;
-  // I2C Module Scan, from_id ... to_id
-  for (uint8_t i=0; i<=127; i++)
-  {
-    Wire.beginTransmission(i);
-    Wire.write(&_data, 0);
-    // I2C Module found out!
-    if (Wire.endTransmission()==0)
-    {
-      // there is a device, we need to check if we should add or remove a previous device
-      if (currentPosition<numberI2CDevices && wireDeviceID[currentPosition]==i) { // it is still the same device that is at the same position, nothing to do
-        currentPosition++;
-      } 
-      else if (currentPosition<numberI2CDevices && wireDeviceID[currentPosition]<i) { // some device(s) disappear, we need to delete them
-        wireRemoveDevice(currentPosition);
-        i--;
-      } 
-      else if (currentPosition>=numberI2CDevices || wireDeviceID[currentPosition]>i) { // we need to add a device
-        //Serial.print("add: ");        DEBUG POUR CONNAITRE L'ADRESSE DE L'I2C !!!!!!!!
-        //Serial.println(i);
-        wireInsertDevice(currentPosition, i);
-        currentPosition++;
-      }
-      chThdSleep(1);
+    if (command < MAX_PARAM) {
+      setAndSaveParameter(command, value);
+    } else {
+#ifdef WIRE_SLAVE_COMMAND
+      wireSlaveCommand(command, value);
+#endif
     }
   }
-  while (currentPosition<numberI2CDevices) {
-    wireRemoveDevice(currentPosition);
-  }
+  */
 }
 
-bool wireDeviceExists(uint8_t id) {
-  for (uint8_t i=0; i<numberI2CDevices; i++) {
-    if (wireDeviceID[i]==id) return true;
-  }
-  return false; 
+#ifdef THR_WIRE_SLAVE
+
+void startWireSlave() {
+  Wire.begin(THR_WIRE_SLAVE);   // join i2c bus with address #8
+  Wire.onReceive(receiveEvent); // register event
+  Wire.onRequest(requestEvent); // register event
 }
 
-
-// We will combine flags in a byte. Using pointer does not seems to improve
-// memory size so we don't use pointer
-void setWireFlag(uint8_t *aByte, uint8_t address) {
-  *aByte |= (1 << (address & 0b00000111));
-}
-
-void clearWireFlag(uint8_t *aByte, uint8_t address) {
-  *aByte &= ~(1 << (address & 0b00000111));
-}
-
-bool wireFlagStatus(uint8_t *aByte, uint8_t address) {
-  return *aByte & (1 << (address & 0b00000111));
-}
+#endif
 
 #endif

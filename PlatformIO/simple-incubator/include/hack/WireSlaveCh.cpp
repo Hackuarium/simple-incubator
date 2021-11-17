@@ -26,7 +26,7 @@ void requestEvent() {
   }
 }
 
-void receiveEvent() {
+void receiveEvent( int numberBytes ) {
   if (Wire.available()) {
     command = Wire.read(); // receive byte as a character
   }

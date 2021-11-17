@@ -2,6 +2,7 @@
 #include <ChNil.h>
 
 #include "Params.h"
+#include "../BioI2C.h"
 
 void checkParameters();
 void initParameters();

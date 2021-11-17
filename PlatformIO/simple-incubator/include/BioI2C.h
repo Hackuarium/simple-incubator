@@ -3,7 +3,7 @@
 
 #include "BioParams.h"
 
-#if defined(I2C)
+#ifdef THR_WIRE_SLAVE
 
 #include <Wire.h>
 /*
@@ -18,18 +18,8 @@
  * Utilities functions 
  **********************/
 
-void wireWrite( uint8_t , uint8_t );
-void wireWrite( uint8_t, uint8_t, uint8_t );
-uint8_t wireRead( uint8_t );
-void wireInfo( Print* );
-void wireUpdateList();
-void wireRemoveDevice( uint8_t );
-void wireInsertDevice( uint8_t, uint8_t );
-bool wireDeviceExists( uint8_t );
-// We will combine flags in a byte. Using pointer does not seems to improve
-// memory size so we don't use pointer
-void setWireFlag( uint8_t*, uint8_t );
-void clearWireFlag( uint8_t*, uint8_t );
-bool wireFlagStatus( uint8_t*, uint8_t );
+void requestEvent();
+void receiveEvent( int );
+void startWireSlave();
 
 #endif

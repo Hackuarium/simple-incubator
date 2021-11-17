@@ -51,8 +51,8 @@ there are not too many activities on the microcontroler
   #include "BioOutputsThread.h"
 #endif
 
-#ifdef THR_LCD
-  #include "IncubatorLCDThread.h"
+#ifdef THR_WIRE_SLAVE
+  #include "BioI2CThread.h"
 #endif
 
 /*******************************************************************************
@@ -62,11 +62,6 @@ there are not too many activities on the microcontroler
 THD_TABLE_BEGIN
 
 // logger should have priority to prevent any corruption of flash memory
-
-
-#ifdef THR_LCD
-THD_TABLE_ENTRY(waThreadLcd, NULL, ThreadLcd, NULL)
-#endif
 
 #ifdef THR_ONEWIRE
   THD_TABLE_ENTRY(waThreadOneWire, NULL, ThreadOneWire, NULL)
@@ -88,6 +83,10 @@ THD_TABLE_ENTRY(waThreadSteps, NULL, ThreadSteps, NULL)
 
 #ifdef THR_SERIAL
 THD_TABLE_ENTRY(waThreadSerial, NULL, ThreadSerial, NULL)
+#endif
+
+#ifdef THR_WIRE_SLAVE
+THD_TABLE_ENTRY(waThreadWire, NULL, ThreadWire, NULL)
 #endif
 
 #ifdef THR_ERROR
