@@ -11,13 +11,13 @@ THD_FUNCTION(ThreadWire, arg) {
   uint8_t aByte=0;
   uint8_t* wireFlag32 = &aByte;
   unsigned int wireEventStatus = 0;
-  Wire.begin();
+  startWireSlave();
+  //Wire.begin();
          
   chThdSleep(10000); //wait for probe warm-up
 
   while(true) {
 
-    startWireSlave();
 
     /*********
      *  pH

@@ -1,7 +1,10 @@
 #include "BioParams.h"
 #include "Params.h"
+#include "Hack.h"
 
 void resetParameters() {
+
+  /*
   setAndSaveParameter(PARAM_TEMP_TARGET, 3000); // 2000
   setAndSaveParameter(PARAM_TEMP_TARGET_1, 3000); // 2000
   setAndSaveParameter(PARAM_TIME_1, 2000);
@@ -9,6 +12,7 @@ void resetParameters() {
   setAndSaveParameter(PARAM_TIME_2, 2000);
   setAndSaveParameter(PARAM_TEMP_TARGET_3, 3000); // 2000
   setAndSaveParameter(PARAM_TIME_3, 2000);
+  */
 
   setAndSaveParameter(PARAM_STATE, 0);
   setAndSaveParameter(PARAM_FLAGS, 0);

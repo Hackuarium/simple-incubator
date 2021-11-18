@@ -24,14 +24,14 @@
   THREADS
 *******************************/
 
-//#define THR_EEPROM_LOGGER 1
-#define THR_SERIAL      1   // Define Serial
-#define THR_ONEWIRE     1   // Define One-wire
-#define THR_PID         1   // Define PID
-#define THR_FAN         1   // Define Fan
-#define THR_WIRE_SLAVE  8   // Define board like Slave and its Address
-#define THR_ERROR       1   // Define Error
-#define THR_MONITORING  1   // Define Monitoring
+#define THR_EEPROM_LOGGER   1   // Define EEPROM Logger
+#define THR_SERIAL          1   // Define Serial
+#define THR_ONEWIRE         1   // Define One-wire
+#define THR_PID             1   // Define PID
+#define THR_FAN             1   // Define Fan
+#define THR_WIRE_SLAVE      8   // Define board like Slave and its Address
+#define THR_ERROR           1   // Define Error
+#define THR_MONITORING      1   // Define Monitoring
 
 /*******************************
   PINS

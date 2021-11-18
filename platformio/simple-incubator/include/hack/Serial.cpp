@@ -8,10 +8,12 @@
 
 #ifdef THR_SERIAL
 
+#ifdef THR_EEPROM_LOGGER
+  #include "Hack.h"
+#endif
+
 char serialBuffer[SERIAL_BUFFER_LENGTH];
 uint8_t serialBufferPosition = 0;
-
-//int parameters[MAX_PARAM];
 
 void printHelp(Print* output) {
   output->println(F("(h)elp"));
