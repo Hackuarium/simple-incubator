@@ -38,12 +38,12 @@ $EndComp
 $Comp
 L incubator_bottom-rescue:C-Device C2
 U 1 1 610AABD5
-P 4925 2275
-F 0 "C2" H 5040 2321 50  0000 L CNN
-F 1 "100n" H 5040 2230 50  0000 L CNN
-F 2 "Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder" H 4963 2125 50  0001 C CNN
-F 3 "~" H 4925 2275 50  0001 C CNN
-	1    4925 2275
+P 4975 2275
+F 0 "C2" H 5090 2321 50  0000 L CNN
+F 1 "100n" H 5090 2230 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder" H 5013 2125 50  0001 C CNN
+F 3 "~" H 4975 2275 50  0001 C CNN
+	1    4975 2275
 	1    0    0    -1  
 $EndComp
 $Comp
@@ -58,12 +58,7 @@ F 3 "~" H 4600 2275 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	4925 2125 4925 2050
-Wire Wire Line
 	4600 2125 4600 2050
-Wire Wire Line
-	4600 2050 4925 2050
-Connection ~ 4925 2050
 $Comp
 L incubator_bottom-rescue:GND-power #PWR0120
 U 1 1 610AABE5
@@ -76,10 +71,6 @@ F 3 "" H 4600 2525 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	4925 2425 4925 2475
-Wire Wire Line
-	4925 2475 4600 2475
-Wire Wire Line
 	4600 2475 4600 2425
 Wire Wire Line
 	4600 2525 4600 2475
@@ -87,27 +78,25 @@ Connection ~ 4600 2475
 $Comp
 L incubator_bottom-rescue:VCC-power #PWR0121
 U 1 1 610AABF0
-P 5150 3400
-F 0 "#PWR0121" H 5150 3250 50  0001 C CNN
-F 1 "VCC" H 5165 3573 50  0000 C CNN
-F 2 "" H 5150 3400 50  0001 C CNN
-F 3 "" H 5150 3400 50  0001 C CNN
-	1    5150 3400
+P 4750 3400
+F 0 "#PWR0121" H 4750 3250 50  0001 C CNN
+F 1 "VCC" H 4765 3573 50  0000 C CNN
+F 2 "" H 4750 3400 50  0001 C CNN
+F 3 "" H 4750 3400 50  0001 C CNN
+	1    4750 3400
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	5150 3400 5150 3525
+	4750 3400 4750 3525
 Wire Wire Line
-	4850 3900 5150 3900
+	4450 3900 4750 3900
 Wire Wire Line
-	5150 3900 5150 3825
+	4750 3900 4750 3825
 Wire Wire Line
-	5150 3975 5150 3900
-Connection ~ 5150 3900
+	4750 3975 4750 3900
+Connection ~ 4750 3900
 Wire Wire Line
-	5150 4350 5150 4275
-Wire Wire Line
-	4925 2050 6175 2050
+	4750 4350 4750 4275
 Connection ~ 6175 2050
 Wire Wire Line
 	6175 2050 6175 2125
@@ -123,17 +112,17 @@ Wire Wire Line
 	6775 2825 6850 2825
 Wire Wire Line
 	6850 2725 6775 2725
-Text GLabel 4850 3900 0    50   Input ~ 0
+Text GLabel 4450 3900 0    50   Input ~ 0
 ~RESET
 $Comp
 L incubator_bottom-rescue:R-Device R12
 U 1 1 610AAC20
-P 5150 3675
-F 0 "R12" H 5220 3721 50  0000 L CNN
-F 1 "100k" H 5220 3630 50  0000 L CNN
-F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder" V 5080 3675 50  0001 C CNN
-F 3 "~" H 5150 3675 50  0001 C CNN
-	1    5150 3675
+P 4750 3675
+F 0 "R12" H 4820 3721 50  0000 L CNN
+F 1 "100k" H 4820 3630 50  0000 L CNN
+F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder" V 4680 3675 50  0001 C CNN
+F 3 "~" H 4750 3675 50  0001 C CNN
+	1    4750 3675
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
@@ -186,12 +175,12 @@ D7
 $Comp
 L incubator_bottom-rescue:GND-power #PWR0122
 U 1 1 610AAC01
-P 5150 4350
-F 0 "#PWR0122" H 5150 4100 50  0001 C CNN
-F 1 "GND" H 5155 4177 50  0000 C CNN
-F 2 "" H 5150 4350 50  0001 C CNN
-F 3 "" H 5150 4350 50  0001 C CNN
-	1    5150 4350
+P 4750 4350
+F 0 "#PWR0122" H 4750 4100 50  0001 C CNN
+F 1 "GND" H 4755 4177 50  0000 C CNN
+F 2 "" H 4750 4350 50  0001 C CNN
+F 3 "" H 4750 4350 50  0001 C CNN
+	1    4750 4350
 	1    0    0    -1  
 $EndComp
 Text HLabel 4500 2475 0    50   Input ~ 0
@@ -254,16 +243,27 @@ Wire Wire Line
 $Comp
 L incubator_bottom-rescue:SolderJumper_2_Open-Jumper JP1
 U 1 1 61118ECF
-P 5150 4125
-F 0 "JP1" V 5104 4193 50  0000 L CNN
-F 1 "SolderJumper_2_Open" V 5195 4193 50  0000 L CNN
-F 2 "Jumper:SolderJumper-2_P1.3mm_Open_RoundedPad1.0x1.5mm" H 5150 4125 50  0001 C CNN
-F 3 "~" H 5150 4125 50  0001 C CNN
-	1    5150 4125
+P 4750 4125
+F 0 "JP1" V 4704 4193 50  0000 L CNN
+F 1 "SolderJumper_2_Open" V 4795 4193 50  0000 L CNN
+F 2 "Jumper:SolderJumper-2_P1.3mm_Open_RoundedPad1.0x1.5mm" H 4750 4125 50  0001 C CNN
+F 3 "~" H 4750 4125 50  0001 C CNN
+	1    4750 4125
 	0    1    1    0   
 $EndComp
 Text HLabel 6850 2625 2    50   Input ~ 0
 ERROR
 Wire Wire Line
 	6775 2625 6850 2625
+Wire Wire Line
+	4975 2475 4975 2425
+Wire Wire Line
+	4600 2475 4975 2475
+Wire Wire Line
+	4600 2050 4975 2050
+Wire Wire Line
+	4975 2125 4975 2050
+Connection ~ 4975 2050
+Wire Wire Line
+	4975 2050 6175 2050
 $EndSCHEMATC
