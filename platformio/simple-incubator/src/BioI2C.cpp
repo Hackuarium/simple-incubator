@@ -31,15 +31,9 @@ void requestEvent() {
 void receiveEvent( int howMany ) {
   (void)howMany;
 
-  while (1 < Wire.available()) { // loop through all but the last
-    uint8_t c = Wire.read(); // receive byte as a character
-    Serial.print(c);         // print the character
-  }
-  uint8_t x = Wire.read();    // receive byte as an integer
-  Serial.println(F("Received"));
-  Serial.println(x);         // print the integer
+  //Serial.println(F("Received"));
+  //Serial.println(howMany);         // print the integer
 
-  /*
   if (Wire.available()) {
     command = Wire.read(); // receive byte as a character
   }
@@ -58,7 +52,6 @@ void receiveEvent( int howMany ) {
 #endif
     }
   }
-  */
 }
 
 #ifdef THR_WIRE_SLAVE

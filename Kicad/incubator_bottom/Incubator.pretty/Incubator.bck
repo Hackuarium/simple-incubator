@@ -1,9 +1,0 @@
-EESchema-DOCLIB  Version 2.0
-#
-$CMP HSC1004R0J
-D Wirewound Resistors HSC100 4R0 5%
-K R res resistor Wirewound
-F ~
-$ENDCMP
-#
-#End Doc Library

@@ -25,15 +25,13 @@
 *******************************/
 
 //#define THR_EEPROM_LOGGER 1
-//#define THR_LCD         1
-#define THR_ERROR             1 // define the pin to blink if there is an error
-#define THR_MONITORING  1
-#define THR_SERIAL      1
-#define THR_FAN         1
-#define THR_ONEWIRE     1
-#define THR_PID         1
-#define THR_WIRE_SLAVE  8 // Address for Slave
-
+#define THR_SERIAL      1   // Define Serial
+#define THR_ONEWIRE     1   // Define One-wire
+#define THR_PID         1   // Define PID
+#define THR_FAN         1   // Define Fan
+#define THR_WIRE_SLAVE  8   // Define board like Slave and its Address
+#define THR_ERROR       1   // Define Error
+#define THR_MONITORING  1   // Define Monitoring
 
 /*******************************
   PINS
@@ -42,21 +40,27 @@
 // MONITORING Thread
 #define MONITORING_LED     13 // Define the pin to blink if everything goes well
 
+// ERROR Thread
+#define OUT_ERROR          10 // Define the pin to blink if there is an error
+
 // FAN Thread
 #define OUT_FAN            5  // Define the pin for fan
 #define TEMP_FAN_ON        1500
 
 // PID Thread
-#define PID_CONTROL        6  // Define the pin for PID control (need to have PWM)
+// Define the pin for PID control (need to have PWM)
+#define PID_CONTROL        6 
 
-// ERROR Thread
-#define OUT_ERROR          10 // Define the pin to blink if there is an error
 
 // ONE WIRE Thread
-#define TEMP_PCB           A3 // Define the pin for One-wire temperature sensor in the PCB
-#define TEMP_EXT1          A2 // Define the pin for One-wire external temperature sensor 1
-#define TEMP_EXT2          A1 // Define the pin for One-wire external temperature sensor 2
-#define TEMP_EXT3          A0 // Define the pin for One-wire external temperature sensor 3
+// Define the pin for One-wire temperature sensor in the PCB
+#define TEMP_PCB           A3
+// Define the pin for One-wire external temperature sensor 1
+#define TEMP_EXT1          A2
+// Define the pin for One-wire external temperature sensor 2
+#define TEMP_EXT2          A1
+// Define the pin for One-wire external temperature sensor 3
+#define TEMP_EXT3          A0
 
 /*******************************
   EVENTS
@@ -72,15 +76,18 @@
 #define EVENT_ERROR_FAILED              6
 #define EVENT_ERROR_RECOVER             7
 
-#define EVENT_ERROR_NOT_FOUND_ENTRY_N  150
+#define EVENT_ERROR_NOT_FOUND_ENTRY_N   150
 
-#define EVENT_SAVE_ALL_PARAMETER     255
-//When parameters are set (and saved) an event is recorded (256-281 : A-Z + .... (if more parameters than 262 ...)
-#define EVENT_PARAMETER_SET          256
+#define EVENT_SAVE_ALL_PARAMETER        255
+/* 
+  When parameters are set (and saved) an event is recorded
+  (256-281 : A-Z + .... (if more parameters than 262 ...)
+*/
+#define EVENT_PARAMETER_SET             256
 
 
 // EEPROM || SST Thread
-#define EVENT_LOGGING  1
+#define EVENT_LOGGING                   1
 
 /******************************
   SERIAL, LOGGER AND DEBUGGERS
@@ -88,31 +95,43 @@
 
 #define MAX_PARAM         68
 
-#ifdef THR_SST_LOGGER
-  #define FLASH_SELECT      1 //Flash SS_SPI
-  #define LOG_INTERVAL      10  //Interval in (s) between logs logger
-  #define EVENT_LOGGING  1
-#endif
-
 #define INT_MAX_VALUE       32767
 #define INT_MIN_VALUE       -32768
 #define LONG_MAX_VALUE      2147483647
 
-#define EE_START_PARAM           0 // We save the parameter from byte 0 of EEPROM
-#define EE_LAST_PARAM            (MAX_PARAM*2-1) // The last parameter is stored at byte 50-51
+// We save the parameter from byte 0 of EEPROM
+#define EE_START_PARAM                  0
+// The last parameter is stored at byte 50-51
+#define EE_LAST_PARAM                   (MAX_PARAM*2-1)
 
-#define EE_QUALIFIER             (MAX_PARAM*2)
+#define EE_QUALIFIER                    (MAX_PARAM*2)
 
-#define EEPROM_MIN_ADDR            0
-#define EEPROM_MAX_ADDR          1023
+#define EEPROM_MIN_ADDR                 0
+#define EEPROM_MAX_ADDR                 1023
 
-#define SERIAL_BUFFER_LENGTH           32
-#define SERIAL_MAX_PARAM_VALUE_LENGTH  32
+#define SERIAL_BUFFER_LENGTH            32
+#define SERIAL_MAX_PARAM_VALUE_LENGTH   32
 
-// setting ATmega32U4 as I2C slave.
+// Setting ATmega328 as I2C slave.
+// Use dedicated I2C pins
 #ifndef I2C_HARDWARE
-#define I2C_HARDWARE 1
+  #define I2C_HARDWARE                  1
 #endif
+
+#define NB_PARAMETERS_LINEAR_LOGS      26
+
+#define LOG_ENTRY_LENGTH                ( NB_PARAMETERS_LINEAR_LOGS + 2 ) * 2
+#define NUMBER_LOGS                     960/LOG_ENTRY_LENGTH
+
+#define FIRST_ADDRESS                   64
+#define LAST_ADDRESS                    1023
+
+// Defines the number of parameters to log
+#define NUMBER_PARAMETERS_TO_LOG        6
+// allowed values: 1, 2, 3, 4, 6, 8, 10, 14
+// 2 first entries in the log will be logID and secodns between
+#define LOG_INTERVAL                    900   // We log every 15 minutes
+// we can store 60 entries in the log
 
 /*******************************
   PARAMETERS
@@ -125,11 +144,6 @@
 #define PARAM_TEMP_PCB       3   // D - temperature of the PID
 #define PARAM_TEMP_TARGET    4   // E - target temperature of the liquid
 #define PARAM_PID            5   // F - heating amount of energy
-
-// 36-51 is used by the 16 allowed step
-#define FIRST_STEP_PARAMETER         52 // BA
-#define LAST_STEP_PARAMETER          67 // BP
-#define NB_STEP_PARAMETERS          LAST_STEP_PARAMETER - FIRST_STEP_PARAMETER + 1
 
 /******************************
   PARAMETERS - FLAG DEFINITION
@@ -173,36 +187,9 @@
 #define I2C_SLOWMODE 1
 #define WIRE_MAX_DEVICES 8
 
-
-/*******************************************************************************
-      EEPROMLogger.h
-*******************************************************************************/
-//#define LOG_INTERVAL      10  //Interval in (s) between logs logger
-
-#define LOG_ENTRY_LENGTH    ( NB_PARAMETERS_LINEAR_LOGS + 2 ) * 2
-#define NUMBER_LOGS         960/LOG_ENTRY_LENGTH
-
-#define FIRST_ADDRESS   64
-#define LAST_ADDRESS   1023
-
-
-#define NUMBER_PARAMETERS_TO_LOG 6  // defines the number of parameters to log
-// allowed values: 1, 2, 3, 4, 6, 8, 10, 14
-// 2 first entries in the log will be logID and secodns between
-#define LOG_INTERVAL 900   // we log every 15 minutes
-// we can store 60 entries in the log
-
-
 /*******************************************************************************
       LCD.h
 *******************************************************************************/
-
-#define PARAM_TEMP_TARGET_1  10
-#define PARAM_TIME_1         11
-#define PARAM_TEMP_TARGET_2  12
-#define PARAM_TIME_2         13
-#define PARAM_TEMP_TARGET_3  14
-#define PARAM_TIME_3         15
 
 #define PARAM_FLAGS           17
 #define PARAM_FLAG_INVERT_ROTARY 0  // invert rotary direction
