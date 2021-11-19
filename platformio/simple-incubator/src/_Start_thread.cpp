@@ -62,11 +62,11 @@ THD_TABLE_ENTRY(waThreadLogger, NULL, ThreadLogger, NULL)
   THD_TABLE_ENTRY(waThreadFan, NULL, ThreadFan, NULL)
   #endif         
 #endif
-/*
+
 #ifdef THR_SERIAL
 THD_TABLE_ENTRY(waThreadSerial, NULL, ThreadSerial, NULL)
 #endif
-*/
+
 #ifdef THR_WIRE_SLAVE
 THD_TABLE_ENTRY(waThreadWire, NULL, ThreadWire, NULL)
 #endif
