@@ -3,7 +3,7 @@
 #include <ChNil.h>
 #include <avr/eeprom.h>
 
-#include "BioParams.h"
+#include "Params.h"
 
 extern int parameters[MAX_PARAM];
 

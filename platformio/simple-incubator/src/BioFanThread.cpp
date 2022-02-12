@@ -1,6 +1,6 @@
 #include <Arduino.h>
 #include <ChNil.h>
-#include <BioParams.h>
+#include <Params.h>
 #include <Funcs.h>
 
 #ifdef THR_FAN

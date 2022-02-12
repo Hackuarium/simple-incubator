@@ -5,7 +5,7 @@
 
 #include "libraries/time/TimeLib.h"
 
-#include "BioParams.h"
+#include "Params.h"
 #include "ToHex.h"
 #include "EEPROMHack.h"
 #include "SSTLogger.h"

@@ -2,7 +2,7 @@
 //#include <TimeLib.h>
 
 #include "BioOneWire.h"
-#include "BioParams.h"
+#include "Params.h"
 #include "Funcs.h"
 #include "SSTLogger.h"
 #include "Weight.h"
