@@ -22,7 +22,7 @@ there are not too many activities on the microcontroler
 #endif
 
 #ifdef THR_SERIAL
-  #include "BioSerialThread.h"
+  #include "SerialThread.h"
 #endif
 
 #ifdef THR_WIRE_SLAVE
