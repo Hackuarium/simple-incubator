@@ -14,11 +14,11 @@ there are not too many activities on the microcontroler
 #endif
 
 #ifdef THR_PID
-  #include "BioPIDThread.h"
+  #include "PIDThread.h"
 #endif
 
 #ifdef THR_FAN
-  #include "BioFanThread.h"
+  #include "FanThread.h"
 #endif
 
 #ifdef THR_SERIAL
