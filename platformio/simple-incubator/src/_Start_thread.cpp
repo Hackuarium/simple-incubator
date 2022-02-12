@@ -34,7 +34,7 @@ there are not too many activities on the microcontroler
 #endif
 
 #ifdef THR_MONITORING
-  #include "BioMonitoringThread.h"
+  #include "MonitoringThread.h"
 #endif
 
 #ifdef THR_EEPROM_LOGGER

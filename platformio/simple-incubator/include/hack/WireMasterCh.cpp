@@ -13,7 +13,7 @@
 byte numberI2CDevices = 0;
 byte wireDeviceID[WIRE_MAX_DEVICES];
 
-#include "BioSem.h"
+#include "Sem.h"
 //SEMAPHORE_DECL(lockTimeCriticalZone, 1); // only one process in some specific zones
 
 #if I2C_HARDWARE == 1

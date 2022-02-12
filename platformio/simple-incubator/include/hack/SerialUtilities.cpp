@@ -5,9 +5,6 @@
 //#include <TimeLib.h>
 #include "libraries/time/TimeLib.h"
 
-#include "BioFunc.h"
-//#include <hack/BioFunc.h>
-//#include <hack/BioFunc.h>
 #include "Funcs.h"
 #include "EEPROMHack.h"
 

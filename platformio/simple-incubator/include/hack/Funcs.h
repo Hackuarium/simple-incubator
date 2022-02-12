@@ -30,3 +30,5 @@ uint8_t printCompactParameters( Print*, uint8_t );
 uint8_t printCompactParameters( Print* );
 
 int getParameter( uint8_t );
+
+void resetParameters();

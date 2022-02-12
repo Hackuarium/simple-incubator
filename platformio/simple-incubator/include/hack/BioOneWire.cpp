@@ -32,7 +32,7 @@
  *********************************************/
 
 
-#include "BioSem.h"
+#include "Sem.h"
 //SEMAPHORE_DECL(lockTimeCriticalZone, 1); // only one process in some specific zones
 
 #ifdef TEMP_EXT1
