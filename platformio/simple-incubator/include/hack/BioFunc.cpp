@@ -1,6 +1,6 @@
 #include "BioParams.h"
 #include "Hack.h"
-#include "Params.h"
+#include "Funcs.h"
 
 void resetParameters() {
   /*

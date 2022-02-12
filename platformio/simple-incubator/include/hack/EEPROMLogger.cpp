@@ -10,7 +10,7 @@
 #include <ChNil.h>
 
 #include "BioParams.h"
-#include "Params.h"
+#include "Funcs.h"
 
 unsigned long lastLog = millis();
 uint16_t eepromLoggerID = 0;

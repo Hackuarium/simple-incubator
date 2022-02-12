@@ -10,7 +10,7 @@
 #include <ChNil.h>
 
 #include "BioParams.h"
-#include "Params.h"
+#include "Funcs.h"
 
 #include "EEPROMLogger.h"
 

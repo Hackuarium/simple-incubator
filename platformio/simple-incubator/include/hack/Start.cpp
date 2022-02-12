@@ -1,7 +1,7 @@
 #include <Arduino.h>
 #include <ChNil.h>
 
-#include "Params.h"
+#include "Funcs.h"
 #include "../BioI2C.h"
 
 void checkParameters();

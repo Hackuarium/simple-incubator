@@ -8,7 +8,7 @@
 #include "BioFunc.h"
 //#include <hack/BioFunc.h>
 //#include <hack/BioFunc.h>
-#include "Params.h"
+#include "Funcs.h"
 #include "EEPROMHack.h"
 
 void printUtilitiesHelp(Print* output) {

@@ -2,7 +2,7 @@
 
 #include <ChNil.h>
 #include "BioParams.h"
-#include "Params.h"
+#include "Funcs.h"
 #include "SerialUtilities.h"
 #include "SerialSpecific.h"
 
