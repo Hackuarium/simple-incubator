@@ -26,7 +26,7 @@ there are not too many activities on the microcontroler
 #endif
 
 #ifdef THR_WIRE_SLAVE
-  #include "BioI2CThread.h"
+  #include "I2CThread.h"
 #endif
 
 #ifdef THR_ERROR

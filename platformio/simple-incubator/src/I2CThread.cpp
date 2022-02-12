@@ -2,7 +2,7 @@
 #include <ChNil.h>
 #include <Params.h>
 
-#include "BioI2C.h"
+#include "I2C.h"
 
 THD_FUNCTION(ThreadWire, arg) {
 

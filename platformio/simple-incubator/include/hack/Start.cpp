@@ -2,7 +2,7 @@
 #include <ChNil.h>
 
 #include "Funcs.h"
-#include "../BioI2C.h"
+#include "../I2C.h"
 
 void checkParameters();
 void initParameters();
