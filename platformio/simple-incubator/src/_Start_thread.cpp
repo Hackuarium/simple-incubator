@@ -10,7 +10,7 @@ there are not too many activities on the microcontroler
 #include "Params.h"
 
 #ifdef THR_ONEWIRE
-  #include "BioOneWireThread.h"
+  #include "OneWireThread.h"
 #endif
 
 #ifdef THR_PID
@@ -30,7 +30,7 @@ there are not too many activities on the microcontroler
 #endif
 
 #ifdef THR_ERROR
-  #include "BioErrorThread.h"
+  #include "ErrorThread.h"
 #endif
 
 #ifdef THR_MONITORING
